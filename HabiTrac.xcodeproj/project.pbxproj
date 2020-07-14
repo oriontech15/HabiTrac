@@ -15,6 +15,9 @@
 		DBE35ABA24BE4C2B004547E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */; };
 		DBE35AC524BE4C2B004547E8 /* HabiTracTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AC424BE4C2B004547E8 /* HabiTracTests.swift */; };
 		DBE35AD024BE4C2B004547E8 /* HabiTracUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */; };
+		DBE35AE024BE59E4004547E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ADF24BE59E4004547E8 /* User.swift */; };
+		DBE35AE224BE59EE004547E8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE124BE59EE004547E8 /* Category.swift */; };
+		DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE324BE59F4004547E8 /* Habit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		DBE35ACB24BE4C2B004547E8 /* HabiTracUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiTracUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiTracUITests.swift; sourceTree = "<group>"; };
 		DBE35AD124BE4C2B004547E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBE35ADF24BE59E4004547E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
+		DBE35AE124BE59EE004547E8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DBE35AE324BE59F4004547E8 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 		DBE35AAC24BE4C2A004547E8 /* HabiTrac */ = {
 			isa = PBXGroup;
 			children = (
+				DBE35ADF24BE59E4004547E8 /* User.swift */,
+				DBE35AE124BE59EE004547E8 /* Category.swift */,
+				DBE35AE324BE59F4004547E8 /* Habit.swift */,
 				DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */,
 				DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */,
 				DBE35AB124BE4C2A004547E8 /* ViewController.swift */,
@@ -259,6 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
+				DBE35AE024BE59E4004547E8 /* User.swift in Sources */,
+				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
