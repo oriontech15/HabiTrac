@@ -10,6 +10,7 @@ target 'HabiTrac' do
   # https://firebase.google.com/docs/ios/setup#available-pods
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'RealmSwift'
 
   target 'HabiTracTests' do
     inherit! :search_paths
