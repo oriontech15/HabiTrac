@@ -7,17 +7,19 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum CategoryType: String {
     case mental = "Mental"
     case physical = "Physical"
     case spiritual = "Spiritual"
     case social = "Social"
+    case none = ""
 }
 
-struct Category {
+class Category: Object {
     
-    var name: String
-    var habits: [Habit]
-    var type: CategoryType
+    @objc dynamic var name: String = ""
+    @objc dynamic var habits: [Habit] = []
+    @objc dynamic var type: CategoryType = .none
 }

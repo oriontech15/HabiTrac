@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct User {
+class User: Object {
     
-    var firstName: String
-    var lastName: String
-    var email: String
-    var userID: String
-    var phone: String
+    @objc dynamic var firstName: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var email: String = ""
+    @objc dynamic var userID: String?
+    @objc dynamic var phone: String = ""
 }

@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Habit {
+class Habit: Object {
      
-    var category: Category
-    var title: String
-    var completionDates: [Date]
+    @objc dynamic var category: Category!
+    @objc dynamic var title: String = ""
+    @objc dynamic var completionDates: [Date] = []
 }
