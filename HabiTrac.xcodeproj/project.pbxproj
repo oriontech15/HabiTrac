@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		177086CC5812CF51FE98572A /* Pods_HabiTrac_HabiTracUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33900F4281EB9C22197DE05B /* Pods_HabiTrac_HabiTracUITests.framework */; };
 		4DFFF09B7D8CE768ECFC5173 /* Pods_HabiTrac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */; };
 		69137D1FFC546BD2EC4A26E8 /* Pods_HabiTracTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */; };
+		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
 		DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */; };
 		DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */; };
 		DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AB124BE4C2A004547E8 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTracTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTrac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTracTests.debug.xcconfig"; path = "Target Support Files/Pods-HabiTracTests/Pods-HabiTracTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		DBE35AAA24BE4C2A004547E8 /* HabiTrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabiTrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +111,6 @@
 				D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */,
 				2718F01E71161670AEB9C19A /* Pods-HabiTracTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -141,6 +142,7 @@
 				DBE35ADF24BE59E4004547E8 /* User.swift */,
 				DBE35AE124BE59EE004547E8 /* Category.swift */,
 				DBE35AE324BE59F4004547E8 /* Habit.swift */,
+				DBAE288324BE6238000B952C /* RealmController.swift */,
 				DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */,
 				DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */,
 				DBE35AB124BE4C2A004547E8 /* ViewController.swift */,
@@ -426,6 +428,7 @@
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
+				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

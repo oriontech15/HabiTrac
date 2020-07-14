@@ -16,4 +16,19 @@ class User: Object {
     @objc dynamic var email: String = ""
     @objc dynamic var userID: String?
     @objc dynamic var phone: String = ""
+    
+    // Need to add primeary key
+    override static func primaryKey() -> String? {
+        return "userID"
+    }
+}
+
+extension User: Syncable {
+    func dictRepresentation() -> [String : AnyObject] {
+        return [:]
+    }
+}
+
+extension User: Realmifyable {
+    
 }

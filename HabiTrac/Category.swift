@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 enum CategoryType: String {
+    
     case mental = "Mental"
     case physical = "Physical"
     case spiritual = "Spiritual"
@@ -21,5 +22,20 @@ class Category: Object {
     
     @objc dynamic var name: String = ""
     @objc dynamic var habits: [Habit] = []
-    @objc dynamic var type: CategoryType = .none
+    @objc dynamic var type: String = CategoryType.none.rawValue
+    @objc dynamic var catID: String?
+    
+    override static func primaryKey() -> String? {
+        return "catID"
+    }
+}
+
+extension Category: Syncable {
+    func dictRepresentation() -> [String : AnyObject] {
+        return [:]
+    }
+}
+
+extension Category: Realmifyable {
+    
 }
