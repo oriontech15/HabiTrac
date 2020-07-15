@@ -3,18 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		177086CC5812CF51FE98572A /* Pods_HabiTrac_HabiTracUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33900F4281EB9C22197DE05B /* Pods_HabiTrac_HabiTracUITests.framework */; };
+		4DFFF09B7D8CE768ECFC5173 /* Pods_HabiTrac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */; };
+		69137D1FFC546BD2EC4A26E8 /* Pods_HabiTracTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */; };
+		DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941324BEBAE0000496B9 /* DashboardViewController.swift */; };
+		DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */; };
+		DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DB24BFB2D0009212EA /* MockDataController.swift */; };
+		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
+		DBAE288624BE70DA000B952C /* Habit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBAE288524BE70DA000B952C /* Habit.storyboard */; };
 		DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */; };
 		DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */; };
 		DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AB124BE4C2A004547E8 /* ViewController.swift */; };
-		DBE35AB524BE4C2A004547E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB324BE4C2A004547E8 /* Main.storyboard */; };
+		DBE35AB524BE4C2A004547E8 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */; };
 		DBE35AB724BE4C2B004547E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB624BE4C2B004547E8 /* Assets.xcassets */; };
 		DBE35ABA24BE4C2B004547E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */; };
 		DBE35AC524BE4C2B004547E8 /* HabiTracTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AC424BE4C2B004547E8 /* HabiTracTests.swift */; };
 		DBE35AD024BE4C2B004547E8 /* HabiTracUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */; };
+		DBE35AE024BE59E4004547E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ADF24BE59E4004547E8 /* User.swift */; };
+		DBE35AE224BE59EE004547E8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE124BE59EE004547E8 /* Category.swift */; };
+		DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE324BE59F4004547E8 /* Habit.swift */; };
+		DBE35AE624BE5C95004547E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +47,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2718F01E71161670AEB9C19A /* Pods-HabiTracTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTracTests.release.xcconfig"; path = "Target Support Files/Pods-HabiTracTests/Pods-HabiTracTests.release.xcconfig"; sourceTree = "<group>"; };
+		33900F4281EB9C22197DE05B /* Pods_HabiTrac_HabiTracUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTrac_HabiTracUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B8BF84684A556767EFC11BF /* Pods-HabiTrac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac.debug.xcconfig"; path = "Target Support Files/Pods-HabiTrac/Pods-HabiTrac.debug.xcconfig"; sourceTree = "<group>"; };
+		690607AC1FAFC006F0DDD7CB /* Pods-HabiTrac-HabiTracUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac-HabiTracUITests.debug.xcconfig"; path = "Target Support Files/Pods-HabiTrac-HabiTracUITests/Pods-HabiTrac-HabiTracUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B16ED37E67E05A6361B9D289 /* Pods-HabiTrac-HabiTracUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac-HabiTracUITests.release.xcconfig"; path = "Target Support Files/Pods-HabiTrac-HabiTracUITests/Pods-HabiTrac-HabiTracUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTracTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTrac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTracTests.debug.xcconfig"; path = "Target Support Files/Pods-HabiTracTests/Pods-HabiTracTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB13941324BEBAE0000496B9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		DBAB36DB24BFB2D0009212EA /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
+		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		DBAE288524BE70DA000B952C /* Habit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Habit.storyboard; sourceTree = "<group>"; };
 		DBE35AAA24BE4C2A004547E8 /* HabiTrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabiTrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DBE35AB124BE4C2A004547E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DBE35AB424BE4C2A004547E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBE35AB424BE4C2A004547E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		DBE35AB624BE4C2B004547E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE35AB924BE4C2B004547E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBE35ABB24BE4C2B004547E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +74,11 @@
 		DBE35ACB24BE4C2B004547E8 /* HabiTracUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiTracUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiTracUITests.swift; sourceTree = "<group>"; };
 		DBE35AD124BE4C2B004547E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBE35ADF24BE59E4004547E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
+		DBE35AE124BE59EE004547E8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DBE35AE324BE59F4004547E8 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
+		DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DBFB98A04044FA5FDC0D7D9A /* Pods-HabiTrac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac.release.xcconfig"; path = "Target Support Files/Pods-HabiTrac/Pods-HabiTrac.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DFFF09B7D8CE768ECFC5173 /* Pods_HabiTrac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69137D1FFC546BD2EC4A26E8 /* Pods_HabiTracTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +102,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177086CC5812CF51FE98572A /* Pods_HabiTrac_HabiTracUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FB280FFD4CDDFF147ABFEC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B8BF84684A556767EFC11BF /* Pods-HabiTrac.debug.xcconfig */,
+				DBFB98A04044FA5FDC0D7D9A /* Pods-HabiTrac.release.xcconfig */,
+				690607AC1FAFC006F0DDD7CB /* Pods-HabiTrac-HabiTracUITests.debug.xcconfig */,
+				B16ED37E67E05A6361B9D289 /* Pods-HabiTrac-HabiTracUITests.release.xcconfig */,
+				D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */,
+				2718F01E71161670AEB9C19A /* Pods-HabiTracTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DBE35AA124BE4C2A004547E8 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +129,8 @@
 				DBE35AC324BE4C2B004547E8 /* HabiTracTests */,
 				DBE35ACE24BE4C2B004547E8 /* HabiTracUITests */,
 				DBE35AAB24BE4C2A004547E8 /* Products */,
+				0FB280FFD4CDDFF147ABFEC6 /* Pods */,
+				F2879BB53091F76C709E6896 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +147,22 @@
 		DBE35AAC24BE4C2A004547E8 /* HabiTrac */ = {
 			isa = PBXGroup;
 			children = (
+				DBE35ADF24BE59E4004547E8 /* User.swift */,
+				DBE35AE124BE59EE004547E8 /* Category.swift */,
+				DBE35AE324BE59F4004547E8 /* Habit.swift */,
+				DBAE288324BE6238000B952C /* RealmController.swift */,
 				DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */,
 				DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */,
 				DBE35AB124BE4C2A004547E8 /* ViewController.swift */,
-				DBE35AB324BE4C2A004547E8 /* Main.storyboard */,
+				DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */,
+				DBAE288524BE70DA000B952C /* Habit.storyboard */,
+				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
+				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
+				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
 				DBE35AB624BE4C2B004547E8 /* Assets.xcassets */,
 				DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */,
 				DBE35ABB24BE4C2B004547E8 /* Info.plist */,
+				DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */,
 			);
 			path = HabiTrac;
 			sourceTree = "<group>";
@@ -128,6 +185,16 @@
 			path = HabiTracUITests;
 			sourceTree = "<group>";
 		};
+		F2879BB53091F76C709E6896 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */,
+				33900F4281EB9C22197DE05B /* Pods_HabiTrac_HabiTracUITests.framework */,
+				B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBE35AD424BE4C2B004547E8 /* Build configuration list for PBXNativeTarget "HabiTrac" */;
 			buildPhases = (
+				E1CD6435463F21EABEDFFDF7 /* [CP] Check Pods Manifest.lock */,
 				DBE35AA624BE4C2A004547E8 /* Sources */,
 				DBE35AA724BE4C2A004547E8 /* Frameworks */,
 				DBE35AA824BE4C2A004547E8 /* Resources */,
+				C54AC7A814F8E05FF9706963 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBE35AD724BE4C2B004547E8 /* Build configuration list for PBXNativeTarget "HabiTracTests" */;
 			buildPhases = (
+				72106DD93C0A23AD6CFCD7C9 /* [CP] Check Pods Manifest.lock */,
 				DBE35ABC24BE4C2B004547E8 /* Sources */,
 				DBE35ABD24BE4C2B004547E8 /* Frameworks */,
 				DBE35ABE24BE4C2B004547E8 /* Resources */,
@@ -170,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBE35ADA24BE4C2B004547E8 /* Build configuration list for PBXNativeTarget "HabiTracUITests" */;
 			buildPhases = (
+				0374ADB2CB370E934A3D4F95 /* [CP] Check Pods Manifest.lock */,
 				DBE35AC724BE4C2B004547E8 /* Sources */,
 				DBE35AC824BE4C2B004547E8 /* Frameworks */,
 				DBE35AC924BE4C2B004547E8 /* Resources */,
+				12FCDA07CE9DF5C2E8F896A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,7 +306,9 @@
 			files = (
 				DBE35ABA24BE4C2B004547E8 /* LaunchScreen.storyboard in Resources */,
 				DBE35AB724BE4C2B004547E8 /* Assets.xcassets in Resources */,
-				DBE35AB524BE4C2A004547E8 /* Main.storyboard in Resources */,
+				DBE35AB524BE4C2A004547E8 /* Authentication.storyboard in Resources */,
+				DBAE288624BE70DA000B952C /* Habit.storyboard in Resources */,
+				DBE35AE624BE5C95004547E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,14 +328,124 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0374ADB2CB370E934A3D4F95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabiTrac-HabiTracUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12FCDA07CE9DF5C2E8F896A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiTrac-HabiTracUITests/Pods-HabiTrac-HabiTracUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiTrac-HabiTracUITests/Pods-HabiTrac-HabiTracUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabiTrac-HabiTracUITests/Pods-HabiTrac-HabiTracUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72106DD93C0A23AD6CFCD7C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabiTracTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C54AC7A814F8E05FF9706963 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiTrac/Pods-HabiTrac-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiTrac/Pods-HabiTrac-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabiTrac/Pods-HabiTrac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1CD6435463F21EABEDFFDF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabiTrac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DBE35AA624BE4C2A004547E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
+				DBE35AE024BE59E4004547E8 /* User.swift in Sources */,
+				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */,
+				DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
+				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
+				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
+				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,12 +481,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DBE35AB324BE4C2A004547E8 /* Main.storyboard */ = {
+		DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DBE35AB424BE4C2A004547E8 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Authentication.storyboard;
 			sourceTree = "<group>";
 		};
 		DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */ = {
@@ -432,6 +616,7 @@
 		};
 		DBE35AD524BE4C2B004547E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B8BF84684A556767EFC11BF /* Pods-HabiTrac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +635,7 @@
 		};
 		DBE35AD624BE4C2B004547E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBFB98A04044FA5FDC0D7D9A /* Pods-HabiTrac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +654,7 @@
 		};
 		DBE35AD824BE4C2B004547E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +677,7 @@
 		};
 		DBE35AD924BE4C2B004547E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2718F01E71161670AEB9C19A /* Pods-HabiTracTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +700,7 @@
 		};
 		DBE35ADB24BE4C2B004547E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 690607AC1FAFC006F0DDD7CB /* Pods-HabiTrac-HabiTracUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +721,7 @@
 		};
 		DBE35ADC24BE4C2B004547E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B16ED37E67E05A6361B9D289 /* Pods-HabiTrac-HabiTracUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
