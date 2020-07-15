@@ -25,6 +25,10 @@ class Category: Object {
     @objc dynamic var type: String = CategoryType.none.rawValue
     @objc dynamic var catID: String?
     
+    required init() {
+        catID = UUID().uuidString
+    }
+    
     override static func primaryKey() -> String? {
         return "catID"
     }
