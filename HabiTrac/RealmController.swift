@@ -43,6 +43,7 @@ extension Realmifyable {
     var realm: Realm { get { return try! Realm() } }
     
     func save<T: Object & Syncable>(object: T) {
+        
         let dict = object.dictRepresentation()
         
         if let firstName = dict[object.firstNameKey] as? String,
