@@ -13,8 +13,12 @@ class Habit: Object {
     
     @objc dynamic var categoryID: String = ""
     @objc dynamic var title: String = ""
-    @objc dynamic var completionDates: [Date] = []
-    @objc dynamic var id: String?
+    var completionDates: RealmSwift.List<String> = List<String>()
+    @objc dynamic var id: String!
+    
+    required init() {
+        self.id = UUID().uuidString
+    }
     
     override static func primaryKey() -> String? {
         return "id"

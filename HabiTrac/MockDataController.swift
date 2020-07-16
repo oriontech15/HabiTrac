@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class MockDataController {
     
@@ -19,18 +20,22 @@ class MockDataController {
         let physical = Category()
         physical.name = "Physical"
         physical.type = "Physical"
+        //physical.save(object: physical)
         
         let mental = Category()
         mental.name = "Mental"
         mental.type = "Mental"
+        //mental.save(object: mental)
         
         let spiritual = Category()
         spiritual.name = "Spiritual"
         spiritual.type = "Spiritual"
+        //spiritual.save(object: spiritual)
         
         let social = Category()
         social.name = "Social"
         social.type = "Social"
+        //social.save(object: social)
         
         self.categories = [physical, mental, spiritual, social]
     }
@@ -41,8 +46,9 @@ class MockDataController {
         
         for index in 0..<16 {
             let habit = Habit()
-            habit.title = "Habit \(index)"
-            habit.completionDates = [Date(), Date().add(days: 2)!, Date().add(days: 3)!, Date().add(days: 6)!, Date().add(days: -2)!]
+            habit.title = "Habit \(index + 1)"
+            
+            habit.completionDates.append(objectsIn: [Date().toDateString(), Date().add(days: 2)!.toDateString(), Date().add(days: 3)!.toDateString(), Date().add(days: 6)!.toDateString(), Date().add(days: -2)!.toDateString()])
             
             switch index {
             case 0...3:
@@ -65,6 +71,7 @@ class MockDataController {
                 break
             }
             
+            //habit.save(object: habit)
             habits.append(habit)
         }
         
@@ -74,7 +81,7 @@ class MockDataController {
 
 extension Date {
     func add(days: Int) -> Date? {
-        let currentDate = Date()
+        let currentDate = self
         var dateComponent = DateComponents()
         dateComponent.day = days
         
@@ -83,18 +90,18 @@ extension Date {
         return futureDate
     }
     
-    func getFirstDateOfMonth() -> Date? {
+    static func getFirstDateOfMonth() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.month], from: date)
+        let components = calendar.dateComponents([.year, .month], from: date)
         
         let startOfMonth = calendar.date(from: components)
         return startOfMonth
     }
     
-    func getFirstDateOfWeek() -> Date? {
+    static func getFirstDateOfWeek() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -105,7 +112,7 @@ extension Date {
         return startOfWeek
     }
     
-    func getFirstDateOfYear() -> Date? {
+    static func getFirstDateOfYear() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -114,5 +121,30 @@ extension Date {
         
         let startOfYear = calendar.date(from: components)
         return startOfYear
+    }
+    
+    func toDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+
+        let date = dateFormatter.string(from: self)
+        
+        return date
+    }
+    
+    func getCurrentMonthString() -> String {
+        let now = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: now)
+        return nameOfMonth
+    }
+    
+    func getCurrentDayString() -> String {
+        let now = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        let nameOfMonth = dateFormatter.string(from: now)
+        return nameOfMonth
     }
 }

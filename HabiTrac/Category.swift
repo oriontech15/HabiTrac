@@ -21,7 +21,7 @@ enum CategoryType: String {
 class Category: Object {
     
     @objc dynamic var name: String = ""
-    @objc dynamic var habits: [Habit] = []
+    var habits: RealmSwift.List<Habit> = List<Habit>()
     @objc dynamic var type: String = CategoryType.none.rawValue
     @objc dynamic var catID: String?
     

@@ -13,8 +13,11 @@
 		DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941324BEBAE0000496B9 /* DashboardViewController.swift */; };
 		DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */; };
 		DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DB24BFB2D0009212EA /* MockDataController.swift */; };
+		DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */; };
 		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
 		DBAE288624BE70DA000B952C /* Habit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBAE288524BE70DA000B952C /* Habit.storyboard */; };
+		DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */; };
+		DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */; };
 		DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */; };
 		DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */; };
 		DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AB124BE4C2A004547E8 /* ViewController.swift */; };
@@ -58,8 +61,11 @@
 		DB13941324BEBAE0000496B9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		DBAB36DB24BFB2D0009212EA /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
+		DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompletionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		DBAE288524BE70DA000B952C /* Habit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Habit.storyboard; sourceTree = "<group>"; };
+		DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterTableViewCell.swift; sourceTree = "<group>"; };
 		DBE35AAA24BE4C2A004547E8 /* HabiTrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabiTrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,8 +162,11 @@
 				DBE35AB124BE4C2A004547E8 /* ViewController.swift */,
 				DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */,
 				DBAE288524BE70DA000B952C /* Habit.storyboard */,
+				DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */,
+				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
 				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
 				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
+				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
 				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
 				DBE35AB624BE4C2B004547E8 /* Assets.xcassets */,
 				DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */,
@@ -437,15 +446,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
+				DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */,
 				DBE35AE024BE59E4004547E8 /* User.swift in Sources */,
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */,
+				DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */,
 				DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
 				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
 				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
 				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
+				DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

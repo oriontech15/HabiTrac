@@ -13,28 +13,28 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let sectionHeaders: [String] = ["Physical", "Mental", "Spiritual", "Social"]
-
+    
     private var mockData: [Habit] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.mockData = MockDataController.shared.mockData()
         self.tableView.reloadData()
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
@@ -43,12 +43,20 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockData.count
+        return mockData.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == mockData.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "footerCell", for: indexPath) as! DashboardFooterTableViewCell
+            cell.scrollDelegate = self
+            cell.setup()
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
         cell.scrollDelegate = self
+        cell.setup(with: self.mockData[indexPath.row])
         return cell
     }
 }
@@ -56,8 +64,11 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
 extension DashboardViewController: CollectionViewScrollingDelegate {
     func scrollingIsHappening(offset: CGPoint) {
         for cell in self.tableView.visibleCells {
-            guard let cell = cell as? HabitTableViewCell else { return }
-            cell.scroll(offset: offset)
+            if let cell = cell as? HabitTableViewCell {
+                cell.scroll(offset: offset)
+            } else if let cell = cell as? DashboardFooterTableViewCell {
+                cell.scroll(offset: offset)
+            }
         }
     }
 }

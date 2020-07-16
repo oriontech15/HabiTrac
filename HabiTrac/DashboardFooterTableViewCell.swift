@@ -1,18 +1,14 @@
 //
-//  HabitTableViewCell.swift
+//  DashboardFooterTableViewCell.swift
 //  HabiTrac
 //
-//  Created by Justin Smith on 7/14/20.
+//  Created by Justin Smith on 7/16/20.
 //  Copyright © 2020 Justin Smith. All rights reserved.
 //
 
 import UIKit
 
-protocol CollectionViewScrollingDelegate {
-    func scrollingIsHappening(offset: CGPoint)
-}
-
-class HabitTableViewCell: UITableViewCell {
+class DashboardFooterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var habitTitleLabel: UILabel!
@@ -22,23 +18,21 @@ class HabitTableViewCell: UITableViewCell {
     
     var scrollDelegate: CollectionViewScrollingDelegate?
     var scrollingBeingUpdated: Bool = false
-    private var habit: Habit!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func setup(with habit: Habit) {
-        self.habit = habit
-        self.habitTitleLabel.text = habit.title
+    func setup() {
+        self.habitTitleLabel.text = Date().getCurrentMonthString()
         self.collectionView.reloadData()
     }
     
@@ -51,22 +45,18 @@ class HabitTableViewCell: UITableViewCell {
         //self.labelWidthConstraint.constant = 100 - offset.x
         self.scrollingBeingUpdated = false
     }
-
 }
 
-extension HabitTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension DashboardFooterTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCompletionCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colDateCell", for: indexPath) as! ColumnDateCollectionViewCell
         
-        guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return cell }
-        let completed = self.habit.completionDates.contains(date.toDateString())
-        print("DATE:\(date.toDateString()) --- COMPLETED: \(completed)")
-        cell.setupWithDate(date: date, completed: completed)
+        cell.setupWithDate(date: Date.getFirstDateOfMonth()!.add(days: indexPath.row)!)
         
         return cell
     }
