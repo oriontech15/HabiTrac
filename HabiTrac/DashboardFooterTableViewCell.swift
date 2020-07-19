@@ -23,6 +23,8 @@ class DashboardFooterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        //self.collectionView.dataSource = self
+        //self.collectionView.delegate = self
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -20,22 +20,22 @@ class MockDataController {
         let physical = Category()
         physical.name = "Physical"
         physical.type = "Physical"
-        //physical.save(object: physical)
+        physical.save(object: physical)
         
         let mental = Category()
         mental.name = "Mental"
         mental.type = "Mental"
-        //mental.save(object: mental)
+        mental.save(object: mental)
         
         let spiritual = Category()
         spiritual.name = "Spiritual"
         spiritual.type = "Spiritual"
-        //spiritual.save(object: spiritual)
+        spiritual.save(object: spiritual)
         
         let social = Category()
         social.name = "Social"
         social.type = "Social"
-        //social.save(object: social)
+        social.save(object: social)
         
         self.categories = [physical, mental, spiritual, social]
     }
@@ -53,25 +53,33 @@ class MockDataController {
             switch index {
             case 0...3:
                 habit.categoryID = categories[0].catID!
-                categories[0].habits.append(habit)
+                try! RealmController.shared.realm.write {
+                    categories[0].habits.append(habit)
+                }
                 break
             case 4...7:
                 habit.categoryID = categories[1].catID!
-                categories[1].habits.append(habit)
+                try! RealmController.shared.realm.write {
+                    categories[1].habits.append(habit)
+                }
                 break
             case 8...11:
                 habit.categoryID = categories[2].catID!
-                categories[2].habits.append(habit)
+                try! RealmController.shared.realm.write {
+                    categories[2].habits.append(habit)
+                }
                 break
             case 12...15:
                 habit.categoryID = categories[3].catID!
-                categories[3].habits.append(habit)
+                try! RealmController.shared.realm.write {
+                    categories[3].habits.append(habit)
+                }
                 break
             default:
                 break
             }
             
-            //habit.save(object: habit)
+            habit.save(object: habit)
             habits.append(habit)
         }
         
@@ -143,7 +151,7 @@ extension Date {
     func getCurrentDayString() -> String {
         let now = self
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd"
+        dateFormatter.dateFormat = "d"
         let nameOfMonth = dateFormatter.string(from: now)
         return nameOfMonth
     }

@@ -9,6 +9,12 @@
 import Foundation
 import RealmSwift
 
+class RealmController {
+    static let shared = RealmController()
+    
+    let realm = try! Realm()
+}
+
 protocol Syncable {
     func dictRepresentation() -> [String : AnyObject]
 }
@@ -46,64 +52,72 @@ extension Realmifyable {
         
         let dict = object.dictRepresentation()
         
-        if let firstName = dict[object.firstNameKey] as? String,
-            let lastName = dict[object.lastNameKey] as? String,
-            let email = dict[object.emailKey] as? String,
-            let phone = dict[object.phoneKey] as? String,
-            let user = object as? User {
-
-            // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
-            do {
-                try realm.write {
-                    user.firstName = firstName
-                    user.lastName = lastName
-                    user.email = email
-                    user.phone = phone
-                    if objectExist(object: user) {
-                        realm.add(user)
+        if let user = object as? User {
+            
+            if let firstName = dict[object.firstNameKey] as? String,
+                let lastName = dict[object.lastNameKey] as? String,
+                let email = dict[object.emailKey] as? String,
+                let phone = dict[object.phoneKey] as? String {
+                
+                // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
+                do {
+                    try realm.write {
+                        user.firstName = firstName
+                        user.lastName = lastName
+                        user.email = email
+                        user.phone = phone
+                        if !objectExist(object: user) {
+                            realm.add(user)
+                        }
                     }
+                } catch let error {
+                    print("Error: \(error.localizedDescription)")
                 }
-            } catch {
-                print("Error: \(error.localizedDescription)")
             }
         }
         
-        if let catName = dict[object.catNameKey] as? String,
-            let _ = dict[object.habitsKey],
-            let type = dict[object.typeKey] as? String,
-            let category = object as? Category {
-
-            // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
-            do {
-                try realm.write {
-                    category.name = catName
-                    //category.habits = habits
-                    category.type = type
-                    if objectExist(object: category) {
-                        realm.add(category)
+        if let category = object as? Category {
+            if let catName = dict[object.catNameKey] as? String,
+                let _ = dict[object.habitsKey],
+                let type = dict[object.typeKey] as? String {
+                
+                
+                // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
+                do {
+                    try realm.write {
+                        category.name = catName
+                        //category.habits = habits
+                        category.type = type
+                        if !objectExist(object: category) {
+                            realm.add(category)
+                        }
                     }
+                } catch let error {
+                    print("Error: \(error.localizedDescription)")
                 }
-            } catch {
-                print("Error: \(error.localizedDescription)")
             }
         }
         
-        if let category = dict[object.categoryKey] as? String,
-            let title = dict[object.titleKey] as? String,
-            let _ = dict[object.completionDatesKey] as? String,
-            let habit = object as? Habit {
-
-            // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
-            do {
-                try realm.write {
-                    habit.categoryID = category
-                    habit.title = title
-                    if objectExist(object: habit) {
-                        realm.add(habit)
+        if let habit = object as? Habit {
+            
+            if let category = dict[object.categoryKey] as? String,
+                let title = dict[object.titleKey] as? String,
+                let dates = dict[object.completionDatesKey] as? List<String> {
+                
+                // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
+                do {
+                    try realm.write {
+                        habit.categoryID = category
+                        habit.title = title
+                        habit.completionDates = dates
+                        if !objectExist(object: habit) {
+                            realm.add(habit)
+                        }
                     }
+                } catch let error {
+                    print("Error: \(error.localizedDescription)")
                 }
-            } catch {
-                print("Error: \(error.localizedDescription)")
+                
             }
         }
     }

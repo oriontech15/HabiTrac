@@ -27,7 +27,11 @@ class Habit: Object {
 
 extension Habit: Syncable {
     func dictRepresentation() -> [String : AnyObject] {
-        return [:]
+        var dict: [String : AnyObject] = [:]
+        dict[self.categoryKey] = self.categoryID as AnyObject
+        dict[self.titleKey] = self.title as AnyObject
+        dict[self.completionDatesKey] = self.completionDates
+        return dict
     }
 }
 

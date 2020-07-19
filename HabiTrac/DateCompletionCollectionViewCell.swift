@@ -18,13 +18,16 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.borderView.layer.borderWidth = 0.5
-        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+//        self.borderView.layer.borderWidth = 0.5
+//        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
         
     }
     
-    func setupWithDate(date: Date, completed: Bool) {
+    func setupWithDate(date: Date, color: UIColor, completed: Bool) {
         self.date = date
         completed ? (self.completedView.isHidden = false) : (self.completedView.isHidden = true)
+        
+        self.borderView.backgroundColor = color.withAlphaComponent(0.2)
+        self.completedView.backgroundColor = color
     }
 }

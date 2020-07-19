@@ -18,8 +18,8 @@ class ColumnDateCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.borderView.layer.borderWidth = 0.5
-        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+//        self.borderView.layer.borderWidth = 0.5
+//        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
         
     }
     

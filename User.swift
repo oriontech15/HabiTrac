@@ -25,7 +25,12 @@ class User: Object {
 
 extension User: Syncable {
     func dictRepresentation() -> [String : AnyObject] {
-        return [:]
+       var dict: [String : AnyObject] = [:]
+        dict[self.firstNameKey] = self.firstName as AnyObject
+        dict[self.lastNameKey] = self.lastName as AnyObject
+        dict[self.emailKey] = self.email as AnyObject
+        dict[self.phone] = self.phone as AnyObject
+        return dict
     }
 }
 

@@ -17,12 +17,14 @@ class HabitTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var habitTitleLabel: UILabel!
     @IBOutlet weak var shadowStack: UIStackView!
-    
+    @IBOutlet weak var leadingPaddingView: UIView!
     @IBOutlet weak var labelWidthConstraint: NSLayoutConstraint!
     
     var scrollDelegate: CollectionViewScrollingDelegate?
     var scrollingBeingUpdated: Bool = false
     private var habit: Habit!
+    
+    private var rowColor: UIColor = .white
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +41,37 @@ class HabitTableViewCell: UITableViewCell {
     func setup(with habit: Habit) {
         self.habit = habit
         self.habitTitleLabel.text = habit.title
+        self.habitTitleLabel.textAlignment = .center
+//        self.habitTitleLabel.layer.borderWidth = 0.5
+//        self.habitTitleLabel.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
         self.collectionView.reloadData()
+
+        guard let category = CategoryController.shared.getCategory(from: self.habit.categoryID) else { return }
+        self.habitTitleLabel.textColor = .black
+        switch category.type {
+        case CategoryType.physical.rawValue:
+            //self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
+            self.leadingPaddingView.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
+            self.rowColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
+            break
+        case CategoryType.mental.rawValue:
+            //self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
+             self.leadingPaddingView.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
+            self.rowColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
+            break
+        case CategoryType.spiritual.rawValue:
+            //self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.04566108435, green: 0.605656743, blue: 0.8518152237, alpha: 1)
+             self.leadingPaddingView.backgroundColor = #colorLiteral(red: 0.04566108435, green: 0.605656743, blue: 0.8518152237, alpha: 1)
+            self.rowColor = #colorLiteral(red: 0.04566108435, green: 0.605656743, blue: 0.8518152237, alpha: 1)
+            break
+        case CategoryType.social.rawValue:
+            //self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1) //#colorLiteral(red: 1, green: 0.5358503461, blue: 0.1728507876, alpha: 1)
+             self.leadingPaddingView.backgroundColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1)
+            self.rowColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1) //#colorLiteral(red: 1, green: 0.5358503461, blue: 0.1728507876, alpha: 1)
+            break
+        default:
+            break
+        }
     }
     
     func scroll(offset: CGPoint) {
@@ -66,7 +98,7 @@ extension HabitTableViewCell: UICollectionViewDataSource, UICollectionViewDelega
         guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return cell }
         let completed = self.habit.completionDates.contains(date.toDateString())
         print("DATE:\(date.toDateString()) --- COMPLETED: \(completed)")
-        cell.setupWithDate(date: date, completed: completed)
+        cell.setupWithDate(date: date, color: rowColor, completed: completed)
         
         return cell
     }

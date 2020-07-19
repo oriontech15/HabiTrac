@@ -36,7 +36,11 @@ class Category: Object {
 
 extension Category: Syncable {
     func dictRepresentation() -> [String : AnyObject] {
-        return [:]
+        var dict: [String : AnyObject] = [:]
+        dict[self.catNameKey] = self.name as AnyObject
+        dict[self.typeKey] = self.type as AnyObject
+        dict[self.habitsKey] = self.habits
+        return dict
     }
 }
 
