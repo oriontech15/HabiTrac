@@ -14,6 +14,11 @@ class MockDataController {
     static let shared = MockDataController()
     
     var categories: [Category] = []
+    var mockData: [Habit] = []
+    
+    init() {
+        createMockData()
+    }
     
     private func createCategories() {
         
@@ -40,7 +45,7 @@ class MockDataController {
         self.categories = [physical, mental, spiritual, social]
     }
     
-    func mockData() -> [Habit] {
+    func createMockData() {
         createCategories()
         var habits: [Habit] = []
         
@@ -48,7 +53,13 @@ class MockDataController {
             let habit = Habit()
             habit.title = "Habit \(index + 1)"
             
-            habit.completionDates.append(objectsIn: [Date().toDateString(), Date().add(days: 2)!.toDateString(), Date().add(days: 3)!.toDateString(), Date().add(days: 6)!.toDateString(), Date().add(days: -2)!.toDateString()])
+            for _ in 0..<30 {
+                let random = arc4random_uniform(30)
+                let dateString = Date.getFirstDateOfMonth()!.add(days: Int(random))!.toDateString()
+                if !habit.completionDates.contains(dateString) {
+                    habit.completionDates.append(dateString)
+                }
+            }
             
             switch index {
             case 0...3:
@@ -83,7 +94,7 @@ class MockDataController {
             habits.append(habit)
         }
         
-        return habits
+        self.mockData = habits
     }
 }
 

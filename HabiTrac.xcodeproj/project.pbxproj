@@ -15,6 +15,7 @@
 		DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FC24C3D89B0067B27C /* CategoryController.swift */; };
 		DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */; };
 		DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */; };
+		DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70224C5458D0067B27C /* DashboardController.swift */; };
 		DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DB24BFB2D0009212EA /* MockDataController.swift */; };
 		DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */; };
 		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
@@ -66,6 +67,7 @@
 		DB14D6FC24C3D89B0067B27C /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterExternalTableViewDatasource.swift; sourceTree = "<group>"; };
+		DB14D70224C5458D0067B27C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		DBAB36DB24BFB2D0009212EA /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
 		DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompletionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
 				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
 				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
+				DB14D70224C5458D0067B27C /* DashboardController.swift */,
 				DB14D6FC24C3D89B0067B27C /* CategoryController.swift */,
 				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
 				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
@@ -467,6 +470,7 @@
 				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
 				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
+				DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */,
 				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
 				DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */,
 				DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */,

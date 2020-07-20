@@ -64,7 +64,6 @@ extension DashboardFooterTableViewCell: UICollectionViewDataSource, UICollection
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("SCROLLING")
         if !scrollingBeingUpdated {
             self.scrollingBeingUpdated = true
             self.shadowStack.isHidden = false

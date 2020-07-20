@@ -15,6 +15,11 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var tableViewBackground: UIView!
     @IBOutlet weak var trackedHabitsButton: UIButton!
     
+    @IBOutlet weak var physicalLabelView: UIView!
+    @IBOutlet weak var mentalLabelView: UIView!
+    @IBOutlet weak var spiritualLabelView: UIView!
+    @IBOutlet weak var socialLabelView: UIView!
+    
     @IBOutlet weak var dashboardHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     
@@ -26,7 +31,9 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
-        self.mockData = MockDataController.shared.mockData()
+        self.mockData = MockDataController.shared.mockData
+        
+        
         //        self.tableView.layer.borderWidth = 0.5
         //        self.tableView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
 //        self.tableViewBackground.layer.shadowColor = UIColor.black.cgColor
@@ -56,8 +63,9 @@ class DashboardViewController: UIViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       
     }
     
     /*
@@ -84,7 +92,8 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
         cell.scrollDelegate = self
-        cell.setup(with: self.mockData[indexPath.row])
+        let habit = self.mockData[indexPath.row]
+        cell.setup(with: habit, row: indexPath.row)
         return cell
     }
 }

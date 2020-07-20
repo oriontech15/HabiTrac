@@ -17,10 +17,6 @@ class CategoryController {
         let realm = try! Realm()
         let categories = realm.objects(Category.self)
         
-        for cat in categories {
-            print(cat.catID)
-        }
-        
         return categories.filter(NSPredicate(format: "catID == %@", id)).first
     }
 }
