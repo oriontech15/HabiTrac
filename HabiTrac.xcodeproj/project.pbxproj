@@ -24,7 +24,6 @@
 		DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */; };
 		DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */; };
 		DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */; };
-		DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AB124BE4C2A004547E8 /* ViewController.swift */; };
 		DBE35AB524BE4C2A004547E8 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */; };
 		DBE35AB724BE4C2B004547E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB624BE4C2B004547E8 /* Assets.xcassets */; };
 		DBE35ABA24BE4C2B004547E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */; };
@@ -77,7 +76,6 @@
 		DBE35AAA24BE4C2A004547E8 /* HabiTrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabiTrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DBE35AB124BE4C2A004547E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBE35AB424BE4C2A004547E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Authentication.storyboard; sourceTree = "<group>"; };
 		DBE35AB624BE4C2B004547E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE35AB924BE4C2B004547E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +86,7 @@
 		DBE35ACB24BE4C2B004547E8 /* HabiTracUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiTracUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiTracUITests.swift; sourceTree = "<group>"; };
 		DBE35AD124BE4C2B004547E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBE35ADF24BE59E4004547E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
+		DBE35ADF24BE59E4004547E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "HabiTrac/New Group/User.swift"; sourceTree = SOURCE_ROOT; };
 		DBE35AE124BE59EE004547E8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DBE35AE324BE59F4004547E8 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -136,6 +134,85 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DB14D70424C54C610067B27C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBE35ADF24BE59E4004547E8 /* User.swift */,
+				DBE35AE124BE59EE004547E8 /* Category.swift */,
+				DBE35AE324BE59F4004547E8 /* Habit.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DB14D70524C54C7A0067B27C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBAE288324BE6238000B952C /* RealmController.swift */,
+				DB14D70224C5458D0067B27C /* DashboardController.swift */,
+				DB14D6FC24C3D89B0067B27C /* CategoryController.swift */,
+				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DB14D70624C54C920067B27C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */,
+				DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */,
+				DBE35AB624BE4C2B004547E8 /* Assets.xcassets */,
+				DBE35ABB24BE4C2B004547E8 /* Info.plist */,
+				DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB14D70724C54CAB0067B27C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */,
+				DBAE288524BE70DA000B952C /* Habit.storyboard */,
+				DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DB14D70824C54CC20067B27C /* ExternalDatasources */ = {
+			isa = PBXGroup;
+			children = (
+				DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */,
+				DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */,
+			);
+			path = ExternalDatasources;
+			sourceTree = "<group>";
+		};
+		DB14D70924C54CCD0067B27C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DB14D70A24C54CDA0067B27C /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */,
+				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
+				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
+				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		DB14D70B24C54CE50067B27C /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				DB14D70A24C54CDA0067B27C /* CustomCells */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		DBE35AA124BE4C2A004547E8 = {
 			isa = PBXGroup;
 			children = (
@@ -161,29 +238,13 @@
 		DBE35AAC24BE4C2A004547E8 /* HabiTrac */ = {
 			isa = PBXGroup;
 			children = (
-				DBE35ADF24BE59E4004547E8 /* User.swift */,
-				DBE35AE124BE59EE004547E8 /* Category.swift */,
-				DBE35AE324BE59F4004547E8 /* Habit.swift */,
-				DBAE288324BE6238000B952C /* RealmController.swift */,
-				DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */,
-				DBE35AAF24BE4C2A004547E8 /* SceneDelegate.swift */,
-				DBE35AB124BE4C2A004547E8 /* ViewController.swift */,
-				DBE35AB324BE4C2A004547E8 /* Authentication.storyboard */,
-				DBAE288524BE70DA000B952C /* Habit.storyboard */,
-				DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */,
-				DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */,
-				DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */,
-				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
-				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
-				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
-				DB14D70224C5458D0067B27C /* DashboardController.swift */,
-				DB14D6FC24C3D89B0067B27C /* CategoryController.swift */,
-				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
-				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
-				DBE35AB624BE4C2B004547E8 /* Assets.xcassets */,
-				DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */,
-				DBE35ABB24BE4C2B004547E8 /* Info.plist */,
-				DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */,
+				DB14D70624C54C920067B27C /* Supporting Files */,
+				DB14D70424C54C610067B27C /* Model */,
+				DB14D70924C54CCD0067B27C /* ViewControllers */,
+				DB14D70524C54C7A0067B27C /* Controllers */,
+				DB14D70724C54CAB0067B27C /* Storyboards */,
+				DB14D70824C54CC20067B27C /* ExternalDatasources */,
+				DB14D70B24C54CE50067B27C /* CustomViews */,
 			);
 			path = HabiTrac;
 			sourceTree = "<group>";
@@ -463,7 +524,6 @@
 				DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */,
 				DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */,
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
-				DBE35AB224BE4C2A004547E8 /* ViewController.swift in Sources */,
 				DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */,
 				DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
