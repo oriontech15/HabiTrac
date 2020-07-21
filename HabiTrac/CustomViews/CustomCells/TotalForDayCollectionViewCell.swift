@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ColumnDateCollectionViewCell: UICollectionViewCell {
+class TotalForDayCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var borderView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var dateBackgroundView: UIView!
     @IBOutlet weak var currentDateBackgroundView: UIView!
 
@@ -27,7 +27,7 @@ class ColumnDateCollectionViewCell: UICollectionViewCell {
     
     func setupWithDate(date: Date) {
         self.date = date
-        self.dateLabel.text = date.getCurrentDayString()
+        self.totalLabel.text = "\(DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString()))"
         
         if self.date.toDateString() == Date().toDateString() {
             self.currentDateBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.1)

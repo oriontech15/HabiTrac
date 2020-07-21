@@ -16,6 +16,9 @@
 		DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */; };
 		DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */; };
 		DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70224C5458D0067B27C /* DashboardController.swift */; };
+		DB6AC13724C73BE50029E74A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13624C73BE50029E74A /* User.swift */; };
+		DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */; };
+		DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */; };
 		DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DB24BFB2D0009212EA /* MockDataController.swift */; };
 		DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */; };
 		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
@@ -29,7 +32,6 @@
 		DBE35ABA24BE4C2B004547E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AB824BE4C2B004547E8 /* LaunchScreen.storyboard */; };
 		DBE35AC524BE4C2B004547E8 /* HabiTracTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AC424BE4C2B004547E8 /* HabiTracTests.swift */; };
 		DBE35AD024BE4C2B004547E8 /* HabiTracUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */; };
-		DBE35AE024BE59E4004547E8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35ADF24BE59E4004547E8 /* User.swift */; };
 		DBE35AE224BE59EE004547E8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE124BE59EE004547E8 /* Category.swift */; };
 		DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE324BE59F4004547E8 /* Habit.swift */; };
 		DBE35AE624BE5C95004547E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */; };
@@ -67,6 +69,9 @@
 		DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70224C5458D0067B27C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		DB6AC13624C73BE50029E74A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsTableViewCell.swift; sourceTree = "<group>"; };
+		DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalForDayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAB36DB24BFB2D0009212EA /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
 		DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompletionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
@@ -86,7 +91,6 @@
 		DBE35ACB24BE4C2B004547E8 /* HabiTracUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiTracUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE35ACF24BE4C2B004547E8 /* HabiTracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiTracUITests.swift; sourceTree = "<group>"; };
 		DBE35AD124BE4C2B004547E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBE35ADF24BE59E4004547E8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "HabiTrac/New Group/User.swift"; sourceTree = SOURCE_ROOT; };
 		DBE35AE124BE59EE004547E8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DBE35AE324BE59F4004547E8 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -137,7 +141,7 @@
 		DB14D70424C54C610067B27C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DBE35ADF24BE59E4004547E8 /* User.swift */,
+				DB6AC13624C73BE50029E74A /* User.swift */,
 				DBE35AE124BE59EE004547E8 /* Category.swift */,
 				DBE35AE324BE59F4004547E8 /* Habit.swift */,
 			);
@@ -201,6 +205,8 @@
 				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
 				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
 				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
+				DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */,
+				DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -520,9 +526,9 @@
 			files = (
 				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
 				DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */,
-				DBE35AE024BE59E4004547E8 /* User.swift in Sources */,
 				DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */,
 				DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */,
+				DB6AC13724C73BE50029E74A /* User.swift in Sources */,
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */,
 				DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */,
@@ -532,7 +538,9 @@
 				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
 				DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */,
 				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
+				DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */,
 				DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */,
+				DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */,
 				DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,7 +717,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4637N428EN;
-				INFOPLIST_FILE = HabiTrac/Info.plist;
+				INFOPLIST_FILE = "HabiTrac/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -728,7 +736,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4637N428EN;
-				INFOPLIST_FILE = HabiTrac/Info.plist;
+				INFOPLIST_FILE = "HabiTrac/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

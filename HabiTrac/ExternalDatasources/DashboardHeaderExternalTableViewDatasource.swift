@@ -38,8 +38,13 @@ extension DashboardHeaderExternalTableViewDatasource: CollectionViewScrollingDel
         }
         
         for cell in self.dashboardTableView.visibleCells {
-            let cell = cell as! HabitTableViewCell
-            cell.scroll(offset: offset)
+            if let cell = cell as? HabitTableViewCell {
+                cell.scroll(offset: offset)
+            }
+            
+            if let cell = cell as? TotalsTableViewCell {
+                cell.scroll(offset: offset)
+            }
         }
     }
 }

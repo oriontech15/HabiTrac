@@ -36,11 +36,11 @@ class DashboardViewController: UIViewController {
         
         //        self.tableView.layer.borderWidth = 0.5
         //        self.tableView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
-//        self.tableViewBackground.layer.shadowColor = UIColor.black.cgColor
-//        self.tableViewBackground.layer.shadowOpacity = 0.35
-//        self.tableViewBackground.layer.shadowOffset = .zero
-//        self.tableViewBackground.layer.shadowRadius = 2
-//        self.tableViewBackground.layer.cornerRadius = 12
+        //        self.tableViewBackground.layer.shadowColor = UIColor.black.cgColor
+        //        self.tableViewBackground.layer.shadowOpacity = 0.35
+        //        self.tableViewBackground.layer.shadowOffset = .zero
+        //        self.tableViewBackground.layer.shadowRadius = 2
+        //        self.tableViewBackground.layer.cornerRadius = 12
         
         self.dashboardTableView.reloadData()
         
@@ -65,7 +65,7 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       
+        
     }
     
     /*
@@ -86,15 +86,37 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockData.count
+        return mockData.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == mockData.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "totalCell", for: indexPath) as! TotalsTableViewCell
+            cell.scrollDelegate = self
+            cell.setup()
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
         cell.scrollDelegate = self
         let habit = self.mockData[indexPath.row]
         cell.setup(with: habit, row: indexPath.row)
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        
+        let transform = CATransform3DMakeTranslation(0, 20, 0)
+        cell.layer.transform = transform
+        
+        let delay = Double(mockData.count - indexPath.row) * 0.1
+        
+        UIView.animate(withDuration: 0.5, delay: delay, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8,  options: [], animations: {
+            cell.alpha = 1.0
+            cell.layer.transform = CATransform3DIdentity
+        }, completion: nil)
     }
 }
 
@@ -102,6 +124,10 @@ extension DashboardViewController: CollectionViewScrollingDelegate {
     func scrollingIsHappening(offset: CGPoint) {
         for cell in self.dashboardTableView.visibleCells {
             if let cell = cell as? HabitTableViewCell {
+                cell.scroll(offset: offset)
+            }
+            
+            if let cell = cell as? TotalsTableViewCell {
                 cell.scroll(offset: offset)
             }
         }

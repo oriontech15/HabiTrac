@@ -24,6 +24,7 @@ class HabitTableViewCell: UITableViewCell {
     var scrollingBeingUpdated: Bool = false
     private var habit: Habit!
     
+    private var highlightCount = 0
     private var rowColor: UIColor = .white
     
     override func awakeFromNib() {
@@ -31,10 +32,10 @@ class HabitTableViewCell: UITableViewCell {
         // Initialization code
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -42,8 +43,8 @@ class HabitTableViewCell: UITableViewCell {
         self.habit = habit
         self.habitTitleLabel.text = habit.title
         self.habitTitleLabel.textAlignment = .center
-//        self.habitTitleLabel.layer.borderWidth = 0.5
-//        self.habitTitleLabel.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        //        self.habitTitleLabel.layer.borderWidth = 0.5
+        //        self.habitTitleLabel.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
         self.tableViewRow = row
         self.collectionView.reloadData()
         
@@ -80,7 +81,7 @@ class HabitTableViewCell: UITableViewCell {
         //self.labelWidthConstraint.constant = 100 - offset.x
         self.scrollingBeingUpdated = false
     }
-
+    
 }
 
 extension HabitTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -95,16 +96,45 @@ extension HabitTableViewCell: UICollectionViewDataSource, UICollectionViewDelega
         guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return cell }
         let completed = self.habit.completionDates.contains(date.toDateString())
         let range = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) ... MockDataController.shared.mockData.count
-        print(range)
+        
         if range ~= tableViewRow {
-            cell.setupWithDate(date: date, color: rowColor, completed: completed, highlight: true)
+            cell.setupWithDate(date: date, color: rowColor, row: tableViewRow, completed: completed, highlight: true, last: tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
         } else {
             cell.setupWithDate(date: date, color: rowColor, completed: completed, highlight: false)
         }
-
+        
         
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCompletionCollectionViewCell
+//
+//        guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return }
+//        let range = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) ... MockDataController.shared.mockData.count
+//
+//        if range ~= tableViewRow {
+//            let row = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) + highlightCount
+//            //print(row)
+//            UIView.animate(withDuration: 0.05, delay: TimeInterval(row), usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
+//                cell.highlight(color: self.rowColor, last: self.tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
+//            }, completion: nil)
+//            highlightCount += 1
+//        } else {
+//            cell.highlight(color: rowColor, last: false)
+//        }
+//
+//        //
+//        //        if range ~= tableViewRow {
+//        //            cell.highlight(color: rowColor, row: (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) + highlightCount, last: tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
+//        //            highlightCount += 1
+//        //            if indexPath.item == MockDataController.shared.mockData.count {
+//        //                highlightCount = 0
+//        //            }
+//        //        } else {
+//        //            cell.highlight(color: rowColor, last: false)
+//        //        }
+//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !scrollingBeingUpdated {
