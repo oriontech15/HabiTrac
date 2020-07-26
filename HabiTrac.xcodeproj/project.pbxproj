@@ -11,11 +11,14 @@
 		4DFFF09B7D8CE768ECFC5173 /* Pods_HabiTrac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */; };
 		69137D1FFC546BD2EC4A26E8 /* Pods_HabiTracTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B78707A486E3B7EF952972B2 /* Pods_HabiTracTests.framework */; };
 		DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941324BEBAE0000496B9 /* DashboardViewController.swift */; };
-		DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */; };
+		DB13941624BEBB67000496B9 /* HabitDashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13941524BEBB67000496B9 /* HabitDashboardTableViewCell.swift */; };
 		DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FC24C3D89B0067B27C /* CategoryController.swift */; };
 		DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */; };
 		DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */; };
 		DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70224C5458D0067B27C /* DashboardController.swift */; };
+		DB2BE8DE24CD3A03009A2C73 /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */; };
+		DB2BE8E024CD3A5E009A2C73 /* CreateEditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */; };
+		DB2BE8E224CD3C3C009A2C73 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8E124CD3C3C009A2C73 /* HabitTableViewCell.swift */; };
 		DB6AC13724C73BE50029E74A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13624C73BE50029E74A /* User.swift */; };
 		DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */; };
 		DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */; };
@@ -64,11 +67,14 @@
 		C14D3326D5C98AA776D813CE /* Pods_HabiTrac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiTrac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5049923DAE57214A44FFE /* Pods-HabiTracTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTracTests.debug.xcconfig"; path = "Target Support Files/Pods-HabiTracTests/Pods-HabiTracTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB13941324BEBAE0000496B9 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
+		DB13941524BEBB67000496B9 /* HabitDashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDashboardTableViewCell.swift; sourceTree = "<group>"; };
 		DB14D6FC24C3D89B0067B27C /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70224C5458D0067B27C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
+		DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditHabitViewController.swift; sourceTree = "<group>"; };
+		DB2BE8E124CD3C3C009A2C73 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		DB6AC13624C73BE50029E74A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsTableViewCell.swift; sourceTree = "<group>"; };
 		DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalForDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +199,8 @@
 		DB14D70924C54CCD0067B27C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */,
+				DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */,
 				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
 			);
 			path = ViewControllers;
@@ -201,9 +209,10 @@
 		DB14D70A24C54CDA0067B27C /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				DB2BE8E124CD3C3C009A2C73 /* HabitTableViewCell.swift */,
 				DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */,
 				DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */,
-				DB13941524BEBB67000496B9 /* HabitTableViewCell.swift */,
+				DB13941524BEBB67000496B9 /* HabitDashboardTableViewCell.swift */,
 				DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */,
 				DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */,
 				DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */,
@@ -531,7 +540,7 @@
 				DB6AC13724C73BE50029E74A /* User.swift in Sources */,
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */,
-				DB13941624BEBB67000496B9 /* HabitTableViewCell.swift in Sources */,
+				DB13941624BEBB67000496B9 /* HabitDashboardTableViewCell.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
 				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
@@ -539,9 +548,12 @@
 				DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */,
 				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
 				DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */,
+				DB2BE8DE24CD3A03009A2C73 /* HabitListViewController.swift in Sources */,
 				DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */,
 				DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */,
 				DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */,
+				DB2BE8E224CD3C3C009A2C73 /* HabitTableViewCell.swift in Sources */,
+				DB2BE8E024CD3A5E009A2C73 /* CreateEditHabitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

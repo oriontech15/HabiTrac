@@ -97,7 +97,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "habitDashboardCell", for: indexPath) as! HabitDashboardTableViewCell
         cell.scrollDelegate = self
         let habit = self.mockData[indexPath.row]
         cell.setup(with: habit, row: indexPath.row)
@@ -123,7 +123,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
 extension DashboardViewController: CollectionViewScrollingDelegate {
     func scrollingIsHappening(offset: CGPoint) {
         for cell in self.dashboardTableView.visibleCells {
-            if let cell = cell as? HabitTableViewCell {
+            if let cell = cell as? HabitDashboardTableViewCell {
                 cell.scroll(offset: offset)
             }
             
