@@ -18,14 +18,25 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var bottomHighlightView: UIView!
     
+    @IBOutlet weak var completionViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var completionViewHeight: NSLayoutConstraint!
+    
     private var date: Date!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        self.borderView.layer.borderWidth = 0.5
-//        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
-        
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            self.completionViewWidth.constant = 4
+            self.completionViewHeight.constant = 4
+            
+            self.completedView.layer.cornerRadius = 2
+        } else {
+            self.completionViewWidth.constant = 8
+            self.completionViewHeight.constant = 8
+            
+            self.completedView.layer.cornerRadius = 4
+        }
     }
     
     func setupWithDate(date: Date, color: UIColor, row: Int? = nil, completed: Bool, highlight: Bool, last: Bool = false) {
@@ -33,7 +44,7 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
         completed ? (self.completedView.isHidden = false) : (self.completedView.isHidden = true)
         
         if date.toDateString() == Date().toDateString() {
-//            self.borderView.layer.cornerRadius = 5
+            //            self.borderView.layer.cornerRadius = 5
             self.borderView.backgroundColor = color.withAlphaComponent(0.3)
             self.currentDateView.backgroundColor = UIColor.black.withAlphaComponent(0.06)
             //self.bottomHighlightView.backgroundColor = color.withAlphaComponent(0.3)
@@ -48,7 +59,7 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
             //self.currentDateView.backgroundColor = .clear
             if date.toDateString() == Date().toDateString() {
                 self.graphBarView.backgroundColor = color.withAlphaComponent(0.5)
-
+                
             } else {
                 self.graphBarView.backgroundColor = color.withAlphaComponent(0.3)
             }
@@ -58,8 +69,25 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
         
         if last {
             self.graphBarView.roundCorners([.topLeft, .topRight], radius: 11)
+            self.layoutIfNeeded()
         } else {
             self.graphBarView.roundCorners([], radius: 0)
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            self.completionViewWidth.constant = 4
+            self.completionViewHeight.constant = 4
+            
+            self.completedView.layer.cornerRadius = 2
+        } else {
+            self.completionViewWidth.constant = 8
+            self.completionViewHeight.constant = 8
+            
+            self.completedView.layer.cornerRadius = 4
         }
     }
     
@@ -67,6 +95,6 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         self.graphBarView.roundCorners([], radius: 0)
-        self.bottomHighlightView.backgroundColor = .white
+        self.bottomHighlightView.backgroundColor = .systemBackground
     }
 }

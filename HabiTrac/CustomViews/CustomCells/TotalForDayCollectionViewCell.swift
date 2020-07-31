@@ -31,7 +31,6 @@ class TotalForDayCollectionViewCell: UICollectionViewCell {
         
         if self.date.toDateString() == Date().toDateString() {
             self.currentDateBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-            self.dateBackgroundView.backgroundColor = .white
             self.dateBackgroundView.layer.cornerRadius = 5
             self.dateBackgroundView.layer.shadowColor = UIColor.black.cgColor
             self.dateBackgroundView.layer.shadowOpacity = 0.35
@@ -39,7 +38,6 @@ class TotalForDayCollectionViewCell: UICollectionViewCell {
             self.dateBackgroundView.layer.shadowRadius = 1
         } else {
             self.currentDateBackgroundView.backgroundColor = .clear
-            self.dateBackgroundView.backgroundColor = .white
             self.dateBackgroundView.layer.cornerRadius = 0
             self.dateBackgroundView.layer.shadowColor = UIColor.black.cgColor
             self.dateBackgroundView.layer.shadowOpacity = 0.0
@@ -52,7 +50,6 @@ class TotalForDayCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         
         self.currentDateBackgroundView.backgroundColor = .clear
-        self.dateBackgroundView.backgroundColor = .white
         self.dateBackgroundView.layer.cornerRadius = 0
         self.dateBackgroundView.layer.shadowColor = UIColor.black.cgColor
         self.dateBackgroundView.layer.shadowOpacity = 0.0

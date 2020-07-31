@@ -13,7 +13,7 @@ class DashboardController {
     static let shared = DashboardController()
     
     func getTotalHabitsCompletedForDay(date: String) -> Int {
-        let habits = MockDataController.shared.mockData
+        let habits = HabitController.shared.habits
         
         var count = 0
         for habit in habits {

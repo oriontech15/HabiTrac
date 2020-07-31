@@ -17,32 +17,43 @@ class MockDataController {
     var mockData: [Habit] = []
     
     init() {
-        createMockData()
+        createCategories()
     }
     
-    private func createCategories() {
+    func createCategories() {
         
-        let physical = Category()
-        physical.name = "Physical"
-        physical.type = "Physical"
-        physical.save(object: physical)
+        let created = UserDefaults.standard.bool(forKey: "CategoriesCreatedKey")
         
-        let mental = Category()
-        mental.name = "Mental"
-        mental.type = "Mental"
-        mental.save(object: mental)
-        
-        let spiritual = Category()
-        spiritual.name = "Spiritual"
-        spiritual.type = "Spiritual"
-        spiritual.save(object: spiritual)
-        
-        let social = Category()
-        social.name = "Social"
-        social.type = "Social"
-        social.save(object: social)
-        
-        self.categories = [physical, mental, spiritual, social]
+        if !created {
+            
+            let physical = Category()
+            physical.name = "Physical"
+            physical.type = "Physical"
+            physical.save(object: physical)
+            
+            let mental = Category()
+            mental.name = "Mental"
+            mental.type = "Mental"
+            mental.save(object: mental)
+            
+            let spiritual = Category()
+            spiritual.name = "Spiritual"
+            spiritual.type = "Spiritual"
+            spiritual.save(object: spiritual)
+            
+            let social = Category()
+            social.name = "Social"
+            social.type = "Social"
+            social.save(object: social)
+            
+            self.categories = [physical, mental, spiritual, social]
+            
+            UserDefaults.standard.set(true, forKey: "CategoriesCreatedKey")
+        } else {
+            let realm = RealmController.shared.realm
+            
+            self.categories = Array(realm.objects(Category.self))
+        }
     }
     
     func createMockData() {
@@ -120,6 +131,32 @@ extension Date {
         return startOfMonth
     }
     
+    static func getLastDateOfMonth() -> Date? {
+        let dateFormatter = DateFormatter()
+        let date = Date()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar.current
+        let startComponents = calendar.dateComponents([.year, .month], from: date)
+        let startOfMonth = calendar.date(from: startComponents)!
+        
+        var lastDayComponents = DateComponents()
+        lastDayComponents.month = 1
+        lastDayComponents.day = -1
+        
+        let endOfMonth = Calendar.current.date(byAdding: lastDayComponents, to: startOfMonth)
+        
+        return endOfMonth
+    }
+    
+    func getDayValue() -> Int {
+        let now = self
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let day = dateFormatter.string(from: now)
+        guard let dayValue = Int(day) else { return 0 }
+        return dayValue
+    }
+    
     static func getFirstDateOfWeek() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -142,10 +179,10 @@ extension Date {
         return startOfYear
     }
     
-    func toDateString() -> String {
+    func toDateString(_ style: DateFormatter.Style = .short) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-
+        dateFormatter.dateStyle = style
+        
         let date = dateFormatter.string(from: self)
         
         return date
@@ -163,8 +200,8 @@ extension Date {
         let now = self
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
-        let nameOfMonth = dateFormatter.string(from: now)
-        return nameOfMonth
+        let dayName = dateFormatter.string(from: now)
+        return dayName
     }
 }
 
@@ -174,7 +211,7 @@ extension UIView {
             roundedRect: bounds,
             byRoundingCorners: corners,
             cornerRadii: CGSize(width: radius, height: radius))
-
+        
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape

@@ -19,6 +19,9 @@ class DashboardFooterTableViewCell: UITableViewCell {
     var scrollDelegate: CollectionViewScrollingDelegate?
     var scrollingBeingUpdated: Bool = false
     
+    private var rowHeight: CGFloat = 0
+    private var rowWidth: CGFloat = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,13 +30,19 @@ class DashboardFooterTableViewCell: UITableViewCell {
         //self.collectionView.delegate = self
     }
     
+    deinit {
+        self.scrollDelegate = nil
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     
-    func setup() {
+    func setup(rowHeight: CGFloat, rowWidth: CGFloat) {
+        self.rowHeight = rowHeight
+        self.rowWidth = rowWidth
         self.habitTitleLabel.text = Date().getCurrentMonthString()
         self.collectionView.reloadData()
     }
@@ -49,10 +58,11 @@ class DashboardFooterTableViewCell: UITableViewCell {
     }
 }
 
-extension DashboardFooterTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension DashboardFooterTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        guard let value = Date.getLastDateOfMonth()?.getDayValue() else { return 0 }
+        return value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,4 +80,10 @@ extension DashboardFooterTableViewCell: UICollectionViewDataSource, UICollection
             self.scrollDelegate?.scrollingIsHappening(offset: self.collectionView.contentOffset)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return self.rowHeight == 0 ? CGSize.zero : CGSize(width: self.rowWidth - 1, height: self.rowHeight - 1)
+    }
+    
 }

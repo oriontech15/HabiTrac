@@ -19,12 +19,15 @@ class TotalsTableViewCell: UITableViewCell {
     var scrollDelegate: CollectionViewScrollingDelegate?
     var scrollingBeingUpdated: Bool = false
     
+    private var rowHeight: CGFloat = 0
+    private var rowWidth: CGFloat = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        //self.collectionView.dataSource = self
-        //self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,7 +36,13 @@ class TotalsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup() {
+    deinit {
+        self.scrollDelegate = nil
+    }
+    
+    func setup(rowHeight: CGFloat, rowWidth: CGFloat) {
+        self.rowWidth = rowWidth
+        self.rowHeight = rowHeight
         self.collectionView.reloadData()
     }
     
@@ -48,10 +57,11 @@ class TotalsTableViewCell: UITableViewCell {
     }
 }
 
-extension TotalsTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension TotalsTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        guard let value = Date.getLastDateOfMonth()?.getDayValue() else { return 0 }
+        return value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,6 +70,10 @@ extension TotalsTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.setupWithDate(date: Date.getFirstDateOfMonth()!.add(days: indexPath.row)!)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.rowHeight == 0 ? CGSize.zero : CGSize(width: self.rowWidth - 1, height: self.rowHeight - 1)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

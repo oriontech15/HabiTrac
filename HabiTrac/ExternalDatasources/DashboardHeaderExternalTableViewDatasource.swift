@@ -14,19 +14,37 @@ class DashboardHeaderExternalTableViewDatasource: NSObject, UITableViewDataSourc
     @IBOutlet weak var headerTableView: UITableView!
     @IBOutlet weak var dashboardTableView: UITableView!
     
+    private var habits: [Habit] = []
+    
+    override init() {
+        self.habits = HabitController.shared.habits
+    }
+    
+    var rowHeight: CGFloat = 0 {
+        didSet {
+            headerTableView.reloadData()
+        }
+    }
+    
+    var rowWidth: CGFloat = 0
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.habits.count == 0 ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell", for: indexPath) as! DashboardFooterTableViewCell
         cell.scrollDelegate = self
-        cell.setup()
+        cell.setup(rowHeight: self.rowHeight, rowWidth: self.rowWidth)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return rowHeight
     }
 }
 

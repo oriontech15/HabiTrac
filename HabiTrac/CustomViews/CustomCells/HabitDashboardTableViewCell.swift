@@ -26,11 +26,18 @@ class HabitDashboardTableViewCell: UITableViewCell {
     
     private var highlightCount = 0
     private var rowColor: UIColor = .white
+    private var rowHeight: CGFloat = 0
+    private var rowWidth: CGFloat = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
+    
+    }
+    
+    deinit {
+        self.scrollDelegate = nil
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,17 +46,18 @@ class HabitDashboardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(with habit: Habit, row: Int) {
+    func setup(with habit: Habit, rowHeight: CGFloat, rowWidth: CGFloat, row: Int) {
         self.habit = habit
         self.habitTitleLabel.text = habit.title
         self.habitTitleLabel.textAlignment = .center
-        //        self.habitTitleLabel.layer.borderWidth = 0.5
-        //        self.habitTitleLabel.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        
         self.tableViewRow = row
+        self.rowHeight = rowHeight
+        self.rowWidth = rowWidth
         self.collectionView.reloadData()
         
         guard let category = CategoryController.shared.getCategory(from: self.habit.categoryID) else { return }
-        self.habitTitleLabel.textColor = .black
+        self.habitTitleLabel.textColor = .white
         switch category.type {
         case CategoryType.physical.rawValue:
             self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1).withAlphaComponent(0.9)
@@ -64,8 +72,8 @@ class HabitDashboardTableViewCell: UITableViewCell {
             self.rowColor = #colorLiteral(red: 0.04566108435, green: 0.605656743, blue: 0.8518152237, alpha: 1)
             break
         case CategoryType.social.rawValue:
-            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1).withAlphaComponent(0.9) //#colorLiteral(red: 1, green: 0.5358503461, blue: 0.1728507876, alpha: 1)
-            self.rowColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1) //#colorLiteral(red: 1, green: 0.5358503461, blue: 0.1728507876, alpha: 1)
+            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1).withAlphaComponent(0.9)
+            self.rowColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1)
             break
         default:
             break
@@ -84,10 +92,11 @@ class HabitDashboardTableViewCell: UITableViewCell {
     
 }
 
-extension HabitDashboardTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HabitDashboardTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        guard let value = Date.getLastDateOfMonth()?.getDayValue() else { return 0 }
+        return value
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,46 +104,24 @@ extension HabitDashboardTableViewCell: UICollectionViewDataSource, UICollectionV
         
         guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return cell }
         let completed = self.habit.completionDates.contains(date.toDateString())
-        let range = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) ... MockDataController.shared.mockData.count
+        let range = (HabitController.shared.habits.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) ... HabitController.shared.habits.count
         
         if range ~= tableViewRow {
-            cell.setupWithDate(date: date, color: rowColor, row: tableViewRow, completed: completed, highlight: true, last: tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
+            cell.setupWithDate(date: date, color: rowColor, row: tableViewRow, completed: completed, highlight: true, last: tableViewRow == (HabitController.shared.habits.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
         } else {
             cell.setupWithDate(date: date, color: rowColor, completed: completed, highlight: false)
         }
         
-        
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCompletionCollectionViewCell
-//
-//        guard let date = Date.getFirstDateOfMonth()?.add(days: indexPath.row) else { return }
-//        let range = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) ... MockDataController.shared.mockData.count
-//
-//        if range ~= tableViewRow {
-//            let row = (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) + highlightCount
-//            //print(row)
-//            UIView.animate(withDuration: 0.05, delay: TimeInterval(row), usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
-//                cell.highlight(color: self.rowColor, last: self.tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
-//            }, completion: nil)
-//            highlightCount += 1
-//        } else {
-//            cell.highlight(color: rowColor, last: false)
-//        }
-//
-//        //
-//        //        if range ~= tableViewRow {
-//        //            cell.highlight(color: rowColor, row: (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())) + highlightCount, last: tableViewRow == (MockDataController.shared.mockData.count - DashboardController.shared.getTotalHabitsCompletedForDay(date: date.toDateString())))
-//        //            highlightCount += 1
-//        //            if indexPath.item == MockDataController.shared.mockData.count {
-//        //                highlightCount = 0
-//        //            }
-//        //        } else {
-//        //            cell.highlight(color: rowColor, last: false)
-//        //        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
+            return self.rowHeight == 0 ? CGSize.zero : CGSize(width: self.rowWidth - 1, height: self.rowHeight - 1)
+        } else {
+            return self.rowHeight == 0 ? CGSize.zero : CGSize(width: self.rowWidth - 1, height: self.rowHeight - 1)
+        }
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !scrollingBeingUpdated {

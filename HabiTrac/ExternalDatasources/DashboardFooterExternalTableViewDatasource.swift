@@ -13,12 +13,18 @@ class DashboardFooterExternalTableViewDatasource: NSObject, UITableViewDataSourc
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var habits: [Habit] = []
+    
+    override init() {
+        self.habits = HabitController.shared.habits
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.habits.count == 0 ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

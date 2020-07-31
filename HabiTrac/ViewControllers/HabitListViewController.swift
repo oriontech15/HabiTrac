@@ -10,12 +10,24 @@ import UIKit
 
 class HabitListViewController: UITableViewController {
     
+    @IBOutlet weak var currentDateLabel: UILabel!
+    @IBOutlet weak var previousDateButton: UIButton!
+    @IBOutlet weak var nextDateButton: UIButton!
+    
+    private var currentDate: Date = Date() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     private var habits: [Habit] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.habits = HabitController.shared.habits
+        self.currentDateLabel.text = self.currentDate.toDateString(.long)
     }
     
 
@@ -23,6 +35,15 @@ class HabitListViewController: UITableViewController {
         self.performSegue(withIdentifier: "toCreateEditHabitView", sender: nil)
     }
     
+    @IBAction func previousDateButtonTapped() {
+        self.currentDate = self.currentDate.add(days: -1)!
+        self.currentDateLabel.text = self.currentDate.toDateString(.long)
+    }
+    
+    @IBAction func nextDateButtonTapped() {
+        self.currentDate = self.currentDate.add(days: 1)!
+        self.currentDateLabel.text = self.currentDate.toDateString(.long)
+    }
     
     /*
     // MARK: - Navigation
@@ -37,6 +58,7 @@ class HabitListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCreateEditHabitView" {
             if let vc = segue.destination as? CreateEditHabitViewController {
+                vc.presentingDelegate = self
                 print(vc)
             }
         }
@@ -44,24 +66,50 @@ class HabitListViewController: UITableViewController {
 
 }
 
+extension HabitListViewController: ViewDismissDelegate {
+    func viewDismissing() {
+        self.habits = HabitController.shared.habits
+        self.tableView.reloadData()
+    }
+}
+
 extension HabitListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return MockDataController.shared.categories.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.habits.count == 0 ? 0 : self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[section] }.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
         
+        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[indexPath.section] }[indexPath.row]
+        cell.setup(with: habit, currentDate: self.currentDate)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let habit = self.habits[indexPath.row]
-        print(habit)
-        self.performSegue(withIdentifier: "toCreateEditHabitView", sender: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! HabitTableViewCell
+        
+        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[indexPath.section] }[indexPath.row]
+        let completed = habit.completionDates.contains(currentDate.toDateString())
+        
+        if completed {
+            HabitController.shared.uncompletedHabitFor(dateString: currentDate.toDateString(), habit: habit)
+        } else {
+            HabitController.shared.completeHabitFor(date: currentDate.toDateString(), habit: habit)
+        }
+        
+        cell.highlight(completed: habit.completionDates.contains(currentDate.toDateString()))
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return MockDataController.shared.categories[section].name
     }
 }
