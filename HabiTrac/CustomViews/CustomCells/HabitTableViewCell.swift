@@ -83,9 +83,9 @@ class HabitTableViewCell: UITableViewCell {
             self.selectedBackground.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1).withAlphaComponent(0.8)
             break
         case CategoryType.social.rawValue:
-            self.habitTitleLabel.textColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1)
-            self.colorView.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1)
-            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1).withAlphaComponent(0.8)
+            self.habitTitleLabel.textColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
+            self.colorView.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
+            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1).withAlphaComponent(0.8)
             break
         default:
             break

@@ -60,7 +60,7 @@ class HabitDashboardTableViewCell: UITableViewCell {
         self.habitTitleLabel.textColor = .white
         switch category.type {
         case CategoryType.physical.rawValue:
-            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1).withAlphaComponent(0.9)
+            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.2980392157, blue: 0.2901960784, alpha: 1).withAlphaComponent(0.9)
             self.rowColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
             break
         case CategoryType.mental.rawValue:
@@ -72,8 +72,8 @@ class HabitDashboardTableViewCell: UITableViewCell {
             self.rowColor = #colorLiteral(red: 0.04566108435, green: 0.605656743, blue: 0.8518152237, alpha: 1)
             break
         case CategoryType.social.rawValue:
-            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1).withAlphaComponent(0.9)
-            self.rowColor = #colorLiteral(red: 0.9793888927, green: 0.7546933293, blue: 0, alpha: 1)
+            self.habitTitleLabel.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1).withAlphaComponent(0.9)
+            self.rowColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
             break
         default:
             break
