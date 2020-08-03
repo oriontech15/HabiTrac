@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Authentication View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HabiTrac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AuthenticationViewController" customModule="HabiTrac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                     <constraint firstAttribute="height" constant="60" id="euF-rx-HZF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
-                                <state key="normal" title="Log In">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -31,7 +31,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="laV-oa-eMS" kind="presentation" modalPresentationStyle="fullScreen" id="JfE-We-LX0"/>
+                                    <action selector="actionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rmQ-fi-oRi"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ATj-bN-RpO">
@@ -43,7 +43,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXs-20-zii">
                                                 <rect key="frame" x="15" y="5" width="324" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -64,7 +64,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CtG-wC-sQU">
                                                 <rect key="frame" x="15" y="5" width="324" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -85,7 +85,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-WY-t4h">
                                                 <rect key="frame" x="15" y="5" width="324" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -109,12 +109,28 @@
                                     <constraint firstAttribute="height" constant="180" id="V9f-8J-cHT"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Md-Dn-fJm">
+                                <rect key="frame" x="147" y="808" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="C6d-KT-PP6"/>
+                                    <constraint firstAttribute="height" constant="40" id="l6T-1O-CD0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.12941176469999999" green="0.41960784309999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchAuthModeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2av-Va-wRx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ATj-bN-RpO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="0yi-YX-iOC"/>
+                            <constraint firstItem="3Md-Dn-fJm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Bl-DN-Qmi"/>
                             <constraint firstItem="ATj-bN-RpO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="3Pr-xx-4IF"/>
                             <constraint firstItem="ATj-bN-RpO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5AN-qy-h7N"/>
+                            <constraint firstItem="3Md-Dn-fJm" firstAttribute="top" secondItem="tXL-N3-QP1" secondAttribute="bottom" constant="12" id="5wg-F7-qeb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ATj-bN-RpO" secondAttribute="trailing" constant="30" id="7VL-E0-2FS"/>
                             <constraint firstAttribute="trailing" secondItem="tXL-N3-QP1" secondAttribute="trailing" constant="25" id="B9O-ME-wZM"/>
                             <constraint firstItem="tXL-N3-QP1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="25" id="JhF-Za-hNn"/>
@@ -124,6 +140,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="tXL-N3-QP1" id="v87-9A-bNy"/>
+                        <outlet property="confirmPasswordView" destination="MDH-dT-tEO" id="RqY-mt-8pO"/>
+                        <outlet property="emailView" destination="HxQ-gO-EXG" id="jGa-9U-JEE"/>
+                        <outlet property="passwordView" destination="drc-Bj-qtJ" id="NRK-Sc-QfE"/>
+                        <outlet property="stackView" destination="ATj-bN-RpO" id="bes-Zo-MKb"/>
+                        <outlet property="switchAuthModeButton" destination="3Md-Dn-fJm" id="gDa-AS-iIE"/>
+                        <segue destination="laV-oa-eMS" kind="presentation" identifier="toHabitView" modalPresentationStyle="fullScreen" id="uWQ-af-tTr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

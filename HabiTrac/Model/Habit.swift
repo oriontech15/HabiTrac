@@ -14,7 +14,7 @@ class Habit: Object {
     @objc dynamic var categoryID: String = ""
     @objc dynamic var title: String = ""
     var completionDates: RealmSwift.List<String> = List<String>()
-    @objc dynamic var id: String!
+    @objc dynamic var id: String = ""
     
     required init() {
         self.id = UUID().uuidString
@@ -23,14 +23,21 @@ class Habit: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    override class func ignoredProperties() -> [String] {
+        return ["firType"]
+    }
+    
+    var firType = "habits"
 }
 
-extension Habit: Syncable {
+extension Habit: FirebaseType {
+    
     func dictRepresentation() -> [String : AnyObject] {
         var dict: [String : AnyObject] = [:]
         dict[self.categoryKey] = self.categoryID as AnyObject
         dict[self.titleKey] = self.title as AnyObject
-        dict[self.completionDatesKey] = self.completionDates
+        dict[self.completionDatesKey] = Array(self.completionDates) as AnyObject
         return dict
     }
 }

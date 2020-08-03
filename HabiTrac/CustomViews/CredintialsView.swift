@@ -10,19 +10,10 @@ import UIKit
 
 class CredintialsView: UIView {
     
-    @IBOutlet weak var textField: UITextField!
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-        
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.delegate = self
+        }
     }
     
     override init(frame: CGRect) {
@@ -39,7 +30,6 @@ class CredintialsView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        
         self.layer.cornerRadius = 15
         
         self.layer.shadowColor = UIColor.black.cgColor
@@ -47,5 +37,13 @@ class CredintialsView: UIView {
         self.layer.shadowOffset = .zero
         self.layer.shadowRadius = 2
     }
+}
+
+extension CredintialsView: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        
+        return true
+    }
 }

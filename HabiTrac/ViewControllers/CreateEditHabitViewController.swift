@@ -104,7 +104,7 @@ class CreateEditHabitViewController: UIViewController {
     
     @IBAction func createButtonTapped() {
         // Save new habit
-        if let categoryID = self.selectedCategory?.catID, let title = self.habitTitleTextField.text, self.habitTitleTextField.text != "" {
+        if let categoryID = self.selectedCategory?.id, let title = self.habitTitleTextField.text, self.habitTitleTextField.text != "" {
             HabitController.shared.createHabit(categoryID: categoryID, title: title)
             self.presentingDelegate?.viewDismissing()
             self.dismiss(animated: true, completion: nil)
