@@ -28,11 +28,30 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var switchAuthModeButton: UIButton!
     
+    @IBOutlet weak var stackViewCenterY: NSLayoutConstraint!
+    @IBOutlet weak var actionButtonBottom: NSLayoutConstraint!
+    @IBOutlet weak var logoTop: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setup()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkAuth()
+    }
+    
+    private func checkAuth() {
+        if FirebaseController.shared.checkAuth() {
+            print("WE HAVE A SIGNED IN USER... PROCEEDING")
+            self.performSegue(withIdentifier: "toHabitView", sender: nil)
+        } else {
+            print("WE ARE SETTING UP FOR SIGN IN")
+            setup()
+        }
     }
     
     private func setup() {
@@ -41,6 +60,14 @@ class AuthenticationViewController: UIViewController {
         } else {
             confirmPasswordView.isHidden = true
         }
+        
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.4, options: .curveEaseInOut, animations: {
+            self.logoTop.constant = 100
+            self.stackViewCenterY.constant = 50
+            self.actionButtonBottom.constant = 100
+            
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     @IBAction func actionButtonTapped(_ sender: UIButton) {

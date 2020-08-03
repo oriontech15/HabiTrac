@@ -29,6 +29,18 @@ class FirebaseController {
         database = Database.database().reference()
     }
     
+    func checkAuth() -> Bool {
+        guard let firUser = Auth.auth().currentUser else { return false }
+        
+        let user = User()
+        user.email = firUser.email ?? ""
+        user.id = firUser.uid
+        
+        UserController.shared.currentUser = user
+        CategoryController.shared.createCategories()
+        return true
+    }
+    
     func signIn(with email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let result = authResult {

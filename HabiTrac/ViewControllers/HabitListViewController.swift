@@ -27,8 +27,8 @@ class HabitListViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
         self.habits = HabitController.shared.habits
-        print(habits)
         self.currentDateLabel.text = self.currentDate.toDateString(.long)
+        self.tableView.reloadData()
     }
     
 
