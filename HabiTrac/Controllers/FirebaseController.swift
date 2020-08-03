@@ -74,6 +74,7 @@ class FirebaseController {
     func signOut() {
         do {
             try Auth.auth().signOut()
+            UserController.shared.currentUser = nil
         } catch let error {
             print("ERROR SIGNING OUT: \(error.localizedDescription)")
         }
