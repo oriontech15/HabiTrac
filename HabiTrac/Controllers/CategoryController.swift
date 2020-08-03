@@ -13,18 +13,13 @@ class CategoryController {
     
     static var shared = CategoryController()
     
-    
     var categories: [Category] = []
-    
-    init() {
-        createCategories()
-    }
     
     func getCategory(from id: String) -> Category? {
         let realm = try! Realm()
         let categories = realm.objects(Category.self)
         
-        return categories.filter(NSPredicate(format: "catID == %@", id)).first
+        return categories.filter(NSPredicate(format: "id == %@", id)).first
     }
     
     func createCategories() {

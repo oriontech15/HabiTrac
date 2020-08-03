@@ -28,6 +28,7 @@ class HabitListViewController: UITableViewController {
         // Do any additional setup after loading the view.
         self.habits = HabitController.shared.habits
         self.currentDateLabel.text = self.currentDate.toDateString(.long)
+        self.tableView.reloadData()
     }
     
 
@@ -75,17 +76,17 @@ extension HabitListViewController: ViewDismissDelegate {
 
 extension HabitListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return MockDataController.shared.categories.count
+        return CategoryController.shared.categories.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.habits.count == 0 ? 0 : self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[section] }.count
+        return self.habits.count == 0 ? 0 : self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == CategoryController.shared.categories[section] }.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "habitCell", for: indexPath) as! HabitTableViewCell
         
-        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[indexPath.section] }[indexPath.row]
+        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == CategoryController.shared.categories[indexPath.section] }[indexPath.row]
         cell.setup(with: habit, currentDate: self.currentDate)
         return cell
     }
@@ -93,7 +94,7 @@ extension HabitListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! HabitTableViewCell
         
-        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == MockDataController.shared.categories[indexPath.section] }[indexPath.row]
+        let habit = self.habits.filter { CategoryController.shared.getCategory(from: $0.categoryID) == CategoryController.shared.categories[indexPath.section] }[indexPath.row]
         let completed = habit.completionDates.contains(currentDate.toDateString())
         
         if completed {
@@ -110,6 +111,6 @@ extension HabitListViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return MockDataController.shared.categories[section].name
+        return CategoryController.shared.categories[section].name
     }
 }

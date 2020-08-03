@@ -23,23 +23,29 @@ class Category: Object {
     @objc dynamic var name: String = ""
     var habits: RealmSwift.List<Habit> = List<Habit>()
     @objc dynamic var type: String = CategoryType.none.rawValue
-    @objc dynamic var catID: String?
+    @objc dynamic var id: String = ""
     
     required init() {
-        catID = UUID().uuidString
+        id = UUID().uuidString
     }
     
     override static func primaryKey() -> String? {
-        return "catID"
+        return "id"
     }
+    
+    override class func ignoredProperties() -> [String] {
+        return ["firType"]
+    }
+    
+    var firType = "categories"
 }
 
-extension Category: Syncable {
+extension Category: FirebaseType {
     func dictRepresentation() -> [String : AnyObject] {
         var dict: [String : AnyObject] = [:]
         dict[self.catNameKey] = self.name as AnyObject
         dict[self.typeKey] = self.type as AnyObject
-        dict[self.habitsKey] = self.habits
+        dict[self.habitsKey] = Array(self.habits).map { $0.id } as AnyObject
         return dict
     }
 }

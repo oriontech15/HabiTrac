@@ -52,7 +52,7 @@ extension Realmifyable {
         
         let dict = object.dictRepresentation()
         
-        if let user = object as? User {
+        if var user = object as? User {
             
             if let firstName = dict[object.firstNameKey] as? String,
                 let lastName = dict[object.lastNameKey] as? String,
@@ -74,11 +74,12 @@ extension Realmifyable {
                     print("Error: \(error.localizedDescription)")
                 }
             }
+            
+            user.firSave()
         }
         
-        if let category = object as? Category {
+        if var category = object as? Category {
             if let catName = dict[object.catNameKey] as? String,
-                let _ = dict[object.habitsKey],
                 let type = dict[object.typeKey] as? String {
                 
                 
@@ -96,20 +97,25 @@ extension Realmifyable {
                     print("Error: \(error.localizedDescription)")
                 }
             }
+            
+            category.firSave()
         }
         
-        if let habit = object as? Habit {
+        if var habit = object as? Habit {
             
             if let category = dict[object.categoryKey] as? String,
                 let title = dict[object.titleKey] as? String,
-                let dates = dict[object.completionDatesKey] as? List<String> {
+                let dates = dict[object.completionDatesKey] as? [String] {
                 
                 // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
+                let datesList = List<String>()
+                datesList.append(objectsIn: dates)
+                
                 do {
                     try realm.write {
                         habit.categoryID = category
                         habit.title = title
-                        habit.completionDates = dates
+                        habit.completionDates = datesList
                         if !objectExist(object: habit) {
                             realm.add(habit)
                         }
@@ -119,6 +125,8 @@ extension Realmifyable {
                 }
                 
             }
+            
+            habit.firSave()
         }
     }
     
@@ -128,11 +136,11 @@ extension Realmifyable {
     
     func objectExist <T: Object & Syncable>(object: T) -> Bool {
         if let user = object as? User {
-            return realm.object(ofType: User.self, forPrimaryKey: user.userID) != nil
+            return realm.object(ofType: User.self, forPrimaryKey: user.id) != nil
         }
         
         if let category = object as? Category {
-            return realm.object(ofType: Category.self, forPrimaryKey: category.catID) != nil
+            return realm.object(ofType: Category.self, forPrimaryKey: category.id) != nil
         }
         
         if let habit = object as? Habit {

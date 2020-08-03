@@ -16,6 +16,8 @@
 		DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */; };
 		DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */; };
 		DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB14D70224C5458D0067B27C /* DashboardController.swift */; };
+		DB15FCD224D5021F006BEFC1 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15FCD124D5021F006BEFC1 /* FirebaseController.swift */; };
+		DB15FCD424D518E3006BEFC1 /* CredintialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB15FCD324D518E3006BEFC1 /* CredintialsView.swift */; };
 		DB2BE8DE24CD3A03009A2C73 /* HabitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */; };
 		DB2BE8E024CD3A5E009A2C73 /* CreateEditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */; };
 		DB2BE8E224CD3C3C009A2C73 /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BE8E124CD3C3C009A2C73 /* HabitTableViewCell.swift */; };
@@ -39,6 +41,8 @@
 		DBE35AE224BE59EE004547E8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE124BE59EE004547E8 /* Category.swift */; };
 		DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AE324BE59F4004547E8 /* Habit.swift */; };
 		DBE35AE624BE5C95004547E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */; };
+		DBF271C924D5FD79003FF6D7 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF271C824D5FD79003FF6D7 /* AuthenticationViewController.swift */; };
+		DBF271CB24D60D4B003FF6D7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF271CA24D60D4B003FF6D7 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,8 @@
 		DB14D6FE24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70024C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterExternalTableViewDatasource.swift; sourceTree = "<group>"; };
 		DB14D70224C5458D0067B27C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		DB15FCD124D5021F006BEFC1 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		DB15FCD324D518E3006BEFC1 /* CredintialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CredintialsView.swift; path = HabiTrac/CustomViews/CredintialsView.swift; sourceTree = SOURCE_ROOT; };
 		DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitListViewController.swift; sourceTree = "<group>"; };
 		DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditHabitViewController.swift; sourceTree = "<group>"; };
 		DB2BE8E124CD3C3C009A2C73 /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 		DBE35AE124BE59EE004547E8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DBE35AE324BE59F4004547E8 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DBF271C824D5FD79003FF6D7 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		DBF271CA24D60D4B003FF6D7 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DBFB98A04044FA5FDC0D7D9A /* Pods-HabiTrac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac.release.xcconfig"; path = "Target Support Files/Pods-HabiTrac/Pods-HabiTrac.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6AC13624C73BE50029E74A /* User.swift */,
+				DBF271CA24D60D4B003FF6D7 /* UserController.swift */,
 				DBE35AE124BE59EE004547E8 /* Category.swift */,
 				DBE35AE324BE59F4004547E8 /* Habit.swift */,
 			);
@@ -164,6 +173,7 @@
 				DB302F1B24CF80E200A33615 /* HabitController.swift */,
 				DB14D6FC24C3D89B0067B27C /* CategoryController.swift */,
 				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
+				DB15FCD124D5021F006BEFC1 /* FirebaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +212,7 @@
 		DB14D70924C54CCD0067B27C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBF271C824D5FD79003FF6D7 /* AuthenticationViewController.swift */,
 				DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */,
 				DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */,
 				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
@@ -226,6 +237,7 @@
 		DB14D70B24C54CE50067B27C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				DB15FCD324D518E3006BEFC1 /* CredintialsView.swift */,
 				DB14D70A24C54CDA0067B27C /* CustomCells */,
 			);
 			path = CustomViews;
@@ -538,6 +550,7 @@
 			files = (
 				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
 				DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */,
+				DBF271C924D5FD79003FF6D7 /* AuthenticationViewController.swift in Sources */,
 				DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */,
 				DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */,
 				DB6AC13724C73BE50029E74A /* User.swift in Sources */,
@@ -546,16 +559,19 @@
 				DB13941624BEBB67000496B9 /* HabitDashboardTableViewCell.swift in Sources */,
 				DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */,
 				DBAE288424BE6238000B952C /* RealmController.swift in Sources */,
+				DB15FCD224D5021F006BEFC1 /* FirebaseController.swift in Sources */,
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
 				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
 				DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */,
 				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
 				DB302F1C24CF80E200A33615 /* HabitController.swift in Sources */,
 				DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */,
+				DBF271CB24D60D4B003FF6D7 /* UserController.swift in Sources */,
 				DB2BE8DE24CD3A03009A2C73 /* HabitListViewController.swift in Sources */,
 				DB14D6FF24C4E75D0067B27C /* DashboardHeaderExternalTableViewDatasource.swift in Sources */,
 				DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */,
 				DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */,
+				DB15FCD424D518E3006BEFC1 /* CredintialsView.swift in Sources */,
 				DB2BE8E224CD3C3C009A2C73 /* HabitTableViewCell.swift in Sources */,
 				DB2BE8E024CD3A5E009A2C73 /* CreateEditHabitViewController.swift in Sources */,
 			);
