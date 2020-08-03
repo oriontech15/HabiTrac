@@ -886,6 +886,9 @@
                     <navigationItem key="navigationItem" title="Tracked Habits" id="KuF-fq-e4d">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="person" catalog="system" id="KEM-QO-j7g">
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="profileButtonTapped" destination="FyC-Y1-V52" id="H1O-Zl-RDd"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="beN-9F-Wqr">
                             <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1140,10 +1143,10 @@
             </objects>
             <point key="canvasLocation" x="3002.898550724638" y="-488.16964285714283"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="UvJ-zi-ed2">
             <objects>
-                <viewController id="2gG-D8-KuH" sceneMemberID="viewController">
+                <viewController id="2gG-D8-KuH" customClass="ProfileViewController" customModule="HabiTrac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ccp-Lb-zEs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1257,6 +1260,9 @@
                                         <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionButtonTapped" destination="2gG-D8-KuH" eventType="touchUpInside" id="x71-ax-NUw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofN-Lm-B7m">
                                 <rect key="frame" x="344" y="25" width="45" height="45"/>
@@ -1269,19 +1275,44 @@
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped" destination="2gG-D8-KuH" eventType="touchUpInside" id="HwB-C0-fdd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfw-SV-mtU">
+                                <rect key="frame" x="60" y="687" width="294" height="35"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.29803921570000003" blue="0.2901960784" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="O0E-wg-zOy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signOutButtonTapped" destination="2gG-D8-KuH" eventType="touchUpInside" id="a8f-RK-c2i"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="l9k-d1-DTT" firstAttribute="centerX" secondItem="ccp-Lb-zEs" secondAttribute="centerX" id="2hT-pl-xhl"/>
+                            <constraint firstItem="akB-3s-eGB" firstAttribute="top" secondItem="yfw-SV-mtU" secondAttribute="bottom" constant="15" id="52W-Gj-jmR"/>
                             <constraint firstItem="smf-Zh-oAm" firstAttribute="trailing" secondItem="diD-t8-JqR" secondAttribute="trailing" constant="25" id="8jm-z3-CmN"/>
                             <constraint firstItem="OXw-0o-4X2" firstAttribute="top" secondItem="diD-t8-JqR" secondAttribute="bottom" constant="20" id="9WG-Wn-9Hl"/>
                             <constraint firstAttribute="bottom" secondItem="akB-3s-eGB" secondAttribute="bottom" constant="55" id="BYk-GW-DE7"/>
                             <constraint firstItem="smf-Zh-oAm" firstAttribute="trailing" secondItem="87C-eK-Ez2" secondAttribute="trailing" constant="20" id="Bvs-qR-X0I"/>
                             <constraint firstItem="87C-eK-Ez2" firstAttribute="top" secondItem="smf-Zh-oAm" secondAttribute="top" constant="200" id="ICe-tF-CkU"/>
+                            <constraint firstItem="smf-Zh-oAm" firstAttribute="trailing" secondItem="yfw-SV-mtU" secondAttribute="trailing" constant="60" id="L7Y-CC-JmG"/>
                             <constraint firstItem="l9k-d1-DTT" firstAttribute="top" secondItem="smf-Zh-oAm" secondAttribute="top" constant="50" id="McR-yQ-Q9k"/>
                             <constraint firstItem="smf-Zh-oAm" firstAttribute="trailing" secondItem="OXw-0o-4X2" secondAttribute="trailing" constant="20" id="MtL-GR-3pp"/>
                             <constraint firstItem="TPb-sm-942" firstAttribute="leading" secondItem="smf-Zh-oAm" secondAttribute="leading" constant="15" id="OE2-0D-oht"/>
+                            <constraint firstItem="yfw-SV-mtU" firstAttribute="leading" secondItem="smf-Zh-oAm" secondAttribute="leading" constant="60" id="TRW-Ag-iwZ"/>
                             <constraint firstItem="smf-Zh-oAm" firstAttribute="trailing" secondItem="TPb-sm-942" secondAttribute="trailing" constant="15" id="VX3-ww-3Ei"/>
                             <constraint firstItem="diD-t8-JqR" firstAttribute="top" secondItem="TPb-sm-942" secondAttribute="bottom" constant="12" id="X0f-nJ-WKH"/>
                             <constraint firstItem="akB-3s-eGB" firstAttribute="leading" secondItem="smf-Zh-oAm" secondAttribute="leading" constant="25" id="YM1-99-bhj"/>
@@ -1295,6 +1326,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="smf-Zh-oAm"/>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="akB-3s-eGB" id="zXo-FS-PGb"/>
+                        <outlet property="cancelButton" destination="ofN-Lm-B7m" id="Z4S-wq-hc9"/>
+                        <outlet property="emailLabel" destination="diD-t8-JqR" id="Kd2-37-aFt"/>
+                        <outlet property="firstNameTextField" destination="Ygy-33-wPG" id="qDB-S2-g9c"/>
+                        <outlet property="lastNameTextField" destination="HU8-0V-f2d" id="AYI-Hh-Yhy"/>
+                        <outlet property="nameLabel" destination="87C-eK-Ez2" id="qAM-ST-UnA"/>
+                        <outlet property="phoneTextField" destination="Kin-qb-pkf" id="PES-TS-ZF3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMS-O4-qX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

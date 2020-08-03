@@ -46,6 +46,10 @@ class HabitListViewController: UITableViewController {
         self.currentDateLabel.text = self.currentDate.toDateString(.long)
     }
     
+    @IBAction func profileButtonTapped() {
+        self.performSegue(withIdentifier: "toProfileView", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -62,9 +66,19 @@ class HabitListViewController: UITableViewController {
                 vc.presentingDelegate = self
                 print(vc)
             }
+        } else if segue.identifier == "toProfileView" {
+            if let vc = segue.destination as? ProfileViewController {
+                vc.signOutDelegate = self
+            }
         }
     }
 
+}
+
+extension HabitListViewController: SignOutDelegate {
+    func signOut() {
+        self.tabBarController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension HabitListViewController: ViewDismissDelegate {
