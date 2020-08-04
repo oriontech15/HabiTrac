@@ -83,7 +83,6 @@ class AuthenticationViewController: UIViewController {
                 FirebaseController.shared.signIn(with: email, password: password, completion: { [weak self] (success) in
                     self?.performSegue(withIdentifier: "toHabitView", sender: nil)
                 })
-                
             }
         }
     }

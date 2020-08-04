@@ -65,9 +65,11 @@ class DashboardViewController: UIViewController {
             //$0.categoryID == $1.categoryID
         }
         
-        self.rowHeight = CGFloat(self.view.frame.height - 235) / (CGFloat(self.habits.count + 1))
+        self.rowHeight = CGFloat(self.view.frame.height - 275) / (CGFloat(self.habits.count + 1))
         let rowWidth = CGFloat(self.view.frame.width - 185) / CGFloat(Date.getLastDateOfMonth()?.getDayValue() ?? 30)
         self.rowWidth = (UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight) ? rowWidth : self.rowHeight
+        
+        self.headerTableViewHeight.constant = 50 + self.rowHeight
         
         self.dashboardHeaderDatasource.rowHeight = self.rowHeight
         self.dashboardHeaderDatasource.rowWidth = self.rowWidth
@@ -165,10 +167,10 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
             if let headerView = self.headerTableView.tableHeaderView {
                 headerView.frame.size = CGSize(width: headerView.frame.width, height: 50)
 
-                self.rowHeight = CGFloat(self.view.frame.height - 235) / (CGFloat(self.habits.count + 1))
+                self.rowHeight = CGFloat(self.view.frame.height - 275) / (CGFloat(self.habits.count + 1))
                 self.rowWidth = self.rowHeight
                 
-                self.headerTableViewHeight.constant = 80
+                self.headerTableViewHeight.constant = 50 + self.rowHeight
                 
                 self.dashboardHeaderDatasource.rowHeight = self.rowHeight
                 self.dashboardHeaderDatasource.rowWidth = self.rowWidth

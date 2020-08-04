@@ -15,7 +15,7 @@ protocol FirebaseType: Syncable {
     var firType: String { get set }
     var database: DatabaseReference { get }
     
-    mutating func firDelete()
+    mutating func firDelete(completion: @escaping () -> Void)
     mutating func firSave()
     mutating func firUpdate()
 }
@@ -35,6 +35,19 @@ class FirebaseController {
         let user = User()
         user.email = firUser.email ?? ""
         user.id = firUser.uid
+
+        database.child(user.firType).child(user.id).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dict = snapshot.value as? [String : AnyObject] else { return }
+            if let firstName = dict[user.firstNameKey] as? String {
+                user.firstName = firstName
+            }
+            if let lastName = dict[user.lastNameKey] as? String {
+                user.lastName = lastName
+            }
+            if let phone = dict[user.phoneKey] as? String {
+                user.phone = phone 
+            }
+        }
         
         UserController.shared.currentUser = user
         CategoryController.shared.createCategories()
@@ -43,6 +56,10 @@ class FirebaseController {
     
     func signIn(with email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+            
             if let result = authResult {
                 let user = User()
                 user.id = result.user.uid
@@ -63,7 +80,7 @@ class FirebaseController {
                 user.email = result.user.email ?? ""
                 UserController.shared.currentUser = user
                 user.save(object: user)
-                user.firSave()
+                user.firUpdate()
                 
                 CategoryController.shared.createCategories()
                 completion(true)
@@ -75,6 +92,7 @@ class FirebaseController {
         do {
             try Auth.auth().signOut()
             UserController.shared.currentUser = nil
+            UserDefaults.standard.set(nil, forKey: "CategoriesCreatedKey")
         } catch let error {
             print("ERROR SIGNING OUT: \(error.localizedDescription)")
         }
@@ -90,8 +108,14 @@ extension FirebaseType {
         }
     }
     
-    mutating func firDelete() {
-        
+    mutating func firDelete(completion: @escaping () -> Void) {
+        guard let user = UserController.shared.currentUser else { return }
+        self.database.child("users").child(user.id).child(firType).child(id).removeValue { (error, ref) in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+            completion()
+        }
     }
     
     mutating func firSave() {

@@ -131,7 +131,9 @@ extension Realmifyable {
     }
     
     func delete<T: Object & Syncable>(object: T) {
-        
+        try! realm.write {
+            realm.delete(object)
+        }
     }
     
     func objectExist <T: Object & Syncable>(object: T) -> Bool {

@@ -14,22 +14,38 @@ protocol SignOutDelegate {
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var weekTotalLabel: UILabel!
+    @IBOutlet weak var monthTotalLabel: UILabel!
+    
+    @IBOutlet weak var totalStackView: UIStackView!
+    @IBOutlet weak var editStackView: UIStackView!
+    
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-
+    @IBOutlet weak var editButton: UIButton!
+    
+    private var inEditMode = false
+    
+    let user = UserController.shared.currentUser
     var signOutDelegate: SignOutDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        emailTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        
+        self.weekTotalLabel.text = "\(HabitController.shared.getWeekTotals())"
+        self.monthTotalLabel.text = "\(HabitController.shared.getMonthTotals())"
         setup()
     }
     
@@ -39,14 +55,61 @@ class ProfileViewController: UIViewController {
     
     @IBAction func actionButtonTapped() {
         // Save values
-        self.dismiss(animated: true, completion: nil)
+        guard var user = self.user else { return }
+        
+        if let email = emailTextField.text {
+            user.email = email
+        }
+        
+        if let firstname = firstNameTextField.text {
+            user.firstName = firstname
+        }
+        
+        if let lastname = lastNameTextField.text {
+            user.lastName = lastname
+        }
+        
+        user.save(object: user)
+        user.firUpdate()
+        
+        editButtonTapped()
     }
+    
+    @IBAction func editButtonTapped() {
+        
+        if !inEditMode {
+
+            self.emailLabel.isHidden = true
+            
+            self.emailTextField.text = user?.email
+            self.firstNameTextField.text = user?.firstName
+            self.lastNameTextField.text = user?.lastName
+            
+            self.editStackView.isHidden = false
+            self.totalStackView.isHidden = true
+
+            self.editButton.setImage(UIImage(systemName: "pencil.slash"), for: .normal)
+            self.actionButton.isHidden = false
+            self.inEditMode = true
+        } else {
+            self.emailLabel.isHidden = false
+            
+            self.editStackView.isHidden = true
+            self.totalStackView.isHidden = false
+            
+            self.editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
+            self.actionButton.isHidden = true
+            self.inEditMode = false
+        }
+    }
+    
     @IBAction func signOutButtonTapped() {
         FirebaseController.shared.signOut()
         self.dismiss(animated: true) {
             self.signOutDelegate?.signOut()
         }
     }
+    
     private func setup() {
         guard let user = UserController.shared.currentUser else { return }
         self.nameLabel.text = user.firstName + " " + user.lastName
@@ -54,7 +117,6 @@ class ProfileViewController: UIViewController {
         
         self.firstNameTextField.text = user.firstName
         self.lastNameTextField.text = user.lastName
-        self.phoneTextField.text = user.phone
     }
     
 
@@ -68,4 +130,12 @@ class ProfileViewController: UIViewController {
     }
     */
 
+}
+
+extension ProfileViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
 }

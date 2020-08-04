@@ -22,6 +22,16 @@ class CategoryController {
         return categories.filter(NSPredicate(format: "id == %@", id)).first
     }
     
+    func removeHabit(habit: Habit) {
+        guard let category = getCategory(from: habit.categoryID), let index = category.habits.index(of: habit) else { return }
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            category.habits.remove(at: index)
+        }
+    }
+    
     func createCategories() {
         
         let created = UserDefaults.standard.bool(forKey: "CategoriesCreatedKey")
