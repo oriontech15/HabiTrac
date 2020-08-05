@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Firebase
 
 class CategoryController {
     
@@ -22,31 +23,73 @@ class CategoryController {
         return categories.filter(NSPredicate(format: "id == %@", id)).first
     }
     
+    func deleteAllLocal() {
+        for category in categories {
+            let realm = try! Realm()
+            
+            try! realm.write {
+                realm.delete(category)
+            }
+        }
+    }
+    
+    func removeHabit(habit: Habit) {
+        guard let category = getCategory(from: habit.categoryID), let index = category.habits.index(of: habit.id) else { return }
+        
+        let realm = RealmController.shared.realm
+        
+        try! realm.write {
+            category.habits.remove(at: index)
+        }
+    }
+    
+    func pullAndUpdateLocal(completion: @escaping () -> Void) {
+        let realm = RealmController.shared.realm
+        
+        guard let user = UserController.shared.currentUser, let database = FirebaseController.shared.database else { completion(); return }
+        database.child(user.firType).child(user.id).observeSingleEvent(of: .value) { (snapshot) in
+            guard let value = snapshot.value as? [String : AnyObject], let dict = value["categories"] as? [String : [String : AnyObject]] else { completion(); return }
+            for key in dict.keys {
+                if let catDict = dict[key] {
+                    _ = Category(with: key, dict: catDict)
+                }
+            }
+            
+            self.categories = Array(realm.objects(Category.self))
+            
+            completion()
+        }
+    }
+    
     func createCategories() {
         
         let created = UserDefaults.standard.bool(forKey: "CategoriesCreatedKey")
         
         if !created {
             
-            let physical = Category()
+            var physical = Category()
             physical.name = "Physical"
             physical.type = "Physical"
             physical.save(object: physical)
+            physical.firSave()
             
-            let mental = Category()
+            var mental = Category()
             mental.name = "Mental"
             mental.type = "Mental"
             mental.save(object: mental)
+            mental.firSave()
             
-            let spiritual = Category()
+            var spiritual = Category()
             spiritual.name = "Spiritual"
             spiritual.type = "Spiritual"
             spiritual.save(object: spiritual)
+            spiritual.firSave()
             
-            let social = Category()
+            var social = Category()
             social.name = "Social"
             social.type = "Social"
             social.save(object: social)
+            social.firSave()
             
             self.categories = [physical, mental, spiritual, social]
             

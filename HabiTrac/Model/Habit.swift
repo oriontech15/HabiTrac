@@ -40,6 +40,30 @@ extension Habit: FirebaseType {
         dict[self.completionDatesKey] = Array(self.completionDates) as AnyObject
         return dict
     }
+    
+    convenience init?(with id: String, dict: [String : AnyObject]) {
+        self.init()
+        guard let categoryID = dict[categoryKey] as? String,
+            let title = dict[titleKey] as? String else { return nil }
+        
+        let realm = RealmController.shared.realm
+        
+        try! realm.write {
+            self.id = id
+            self.categoryID = categoryID
+            self.title = title
+            
+            if let completionDates = dict[completionDatesKey] as? [String] {
+                completionDates.forEach { self.completionDates.append($0) }
+            }
+            
+            if !objectExist(object: self) {
+                realm.add(self)
+            } else {
+                realm.add(self, update: .modified)
+            }
+        }
+    }
 }
 
 extension Habit: Realmifyable {

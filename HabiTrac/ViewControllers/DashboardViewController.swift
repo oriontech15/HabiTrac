@@ -16,6 +16,7 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var trackedHabitsButton: UIButton!
     
     @IBOutlet weak var headerTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var keyViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var dashboardHeaderDatasource: DashboardHeaderExternalTableViewDatasource!
     
@@ -29,8 +30,6 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         // Do any additional setup after loading the view.
-        
-        print("CURRENT DATE VALUE: \(Date.getLastDateOfMonth()?.getDayValue())")
         
         self.dashboardTableView.reloadData()
         
@@ -65,9 +64,15 @@ class DashboardViewController: UIViewController {
             //$0.categoryID == $1.categoryID
         }
         
-        self.rowHeight = CGFloat(self.view.frame.height - 235) / (CGFloat(self.habits.count + 1))
+        self.headerTableViewHeight.constant = 80
+        self.keyViewHeight.constant = 30
+        
+        let otherViewHeights: CGFloat = self.headerTableViewHeight.constant + self.keyViewHeight.constant + self.tabBarController!.tabBar.frame.height + 15
+        self.rowHeight = CGFloat(self.view.frame.height - otherViewHeights) / (CGFloat(self.habits.count + 2))
         let rowWidth = CGFloat(self.view.frame.width - 185) / CGFloat(Date.getLastDateOfMonth()?.getDayValue() ?? 30)
         self.rowWidth = (UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight) ? rowWidth : self.rowHeight
+        
+        self.headerTableViewHeight.constant = 50 + self.rowHeight
         
         self.dashboardHeaderDatasource.rowHeight = self.rowHeight
         self.dashboardHeaderDatasource.rowWidth = self.rowWidth
@@ -149,8 +154,12 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             if let headerView = self.headerTableView.tableHeaderView {
                 headerView.frame.size = CGSize(width: headerView.frame.width, height: 0)
-
-                self.rowHeight = CGFloat(self.view.frame.height - 105) / (CGFloat(self.habits.count + 1))
+                
+                self.headerTableViewHeight.constant = 30
+                self.keyViewHeight.constant = 30
+                
+                let otherViewHeights: CGFloat = self.headerTableViewHeight.constant + self.keyViewHeight.constant + self.tabBarController!.tabBar.frame.height
+                self.rowHeight = CGFloat(self.view.frame.height - otherViewHeights) / (CGFloat(self.habits.count + 1))
                 self.rowWidth = CGFloat(self.view.frame.width - 185) / CGFloat(Date.getLastDateOfMonth()?.getDayValue() ?? 30)
 
                 self.headerTableViewHeight.constant = self.rowHeight
@@ -164,11 +173,14 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             if let headerView = self.headerTableView.tableHeaderView {
                 headerView.frame.size = CGSize(width: headerView.frame.width, height: 50)
-
-                self.rowHeight = CGFloat(self.view.frame.height - 235) / (CGFloat(self.habits.count + 1))
+                self.headerTableViewHeight.constant = 80
+                self.keyViewHeight.constant = 30
+                
+                let otherViewHeights: CGFloat = self.headerTableViewHeight.constant + self.keyViewHeight.constant + self.tabBarController!.tabBar.frame.height + 15
+                self.rowHeight = CGFloat(self.view.frame.height - otherViewHeights) / (CGFloat(self.habits.count + 2))
                 self.rowWidth = self.rowHeight
                 
-                self.headerTableViewHeight.constant = 80
+                self.headerTableViewHeight.constant = 50 + self.rowHeight
                 
                 self.dashboardHeaderDatasource.rowHeight = self.rowHeight
                 self.dashboardHeaderDatasource.rowWidth = self.rowWidth

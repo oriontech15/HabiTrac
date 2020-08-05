@@ -72,25 +72,25 @@ class MockDataController {
             case 0...3:
                 habit.categoryID = categories[0].id
                 try! RealmController.shared.realm.write {
-                    categories[0].habits.append(habit)
+                    categories[0].habits.append(habit.id)
                 }
                 break
             case 4...7:
                 habit.categoryID = categories[1].id
                 try! RealmController.shared.realm.write {
-                    categories[1].habits.append(habit)
+                    categories[1].habits.append(habit.id)
                 }
                 break
             case 8...11:
                 habit.categoryID = categories[2].id
                 try! RealmController.shared.realm.write {
-                    categories[2].habits.append(habit)
+                    categories[2].habits.append(habit.id)
                 }
                 break
             case 12...15:
                 habit.categoryID = categories[3].id
                 try! RealmController.shared.realm.write {
-                    categories[3].habits.append(habit)
+                    categories[3].habits.append(habit.id)
                 }
                 break
             default:
@@ -106,6 +106,18 @@ class MockDataController {
 }
 
 extension Date {
+    var startOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 1, to: sunday)
+    }
+
+    var endOfWeek: Date? {
+        let gregorian = Calendar(identifier: .gregorian)
+        guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
+        return gregorian.date(byAdding: .day, value: 7, to: sunday)
+    }
+    
     func add(days: Int) -> Date? {
         let currentDate = self
         var dateComponent = DateComponents()
@@ -153,17 +165,6 @@ extension Date {
         return dayValue
     }
     
-    static func getFirstDateOfWeek() -> Date? {
-        let dateFormatter = DateFormatter()
-        let date = Date()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.weekOfMonth], from: date)
-        
-        let startOfWeek = calendar.date(from: components)
-        return startOfWeek
-    }
-    
     static func getFirstDateOfYear() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -182,6 +183,38 @@ extension Date {
         let date = dateFormatter.string(from: self)
         
         return date
+    }
+    
+    func getCurrentWeekDates() -> [String] {
+        let startOfWeek = Date().startOfWeek
+        
+        var dateStrings: [String] = []
+        
+        for i in 0..<7 {
+            if let dateString = startOfWeek?.add(days: i)?.toDateString() {
+                dateStrings.append(dateString)
+            }
+        }
+        
+        return dateStrings
+    }
+    
+    func getCurrentMonthDates() -> [String] {
+        let startOfMonth = Date.getFirstDateOfMonth()
+        let endOfMonth = Date.getLastDateOfMonth()!
+        
+        let gregorian = Calendar(identifier: .gregorian)
+        let totalDays = gregorian.component(.day, from: endOfMonth)
+        
+        var dateStrings: [String] = []
+        
+        for i in 0..<totalDays {
+            if let dateString = startOfMonth?.add(days: i)?.toDateString() {
+                dateStrings.append(dateString)
+            }
+        }
+        
+        return dateStrings
     }
     
     func getCurrentMonthString() -> String {

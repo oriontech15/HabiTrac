@@ -29,6 +29,7 @@
 		DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */; };
 		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
 		DBAE288624BE70DA000B952C /* Habit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBAE288524BE70DA000B952C /* Habit.storyboard */; };
+		DBB8D39F24D7BB50002700B6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8D39E24D7BB50002700B6 /* ProfileViewController.swift */; };
 		DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */; };
 		DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */; };
 		DBE35AAE24BE4C2A004547E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE35AAD24BE4C2A004547E8 /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompletionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		DBAE288524BE70DA000B952C /* Habit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Habit.storyboard; sourceTree = "<group>"; };
+		DBB8D39E24D7BB50002700B6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DBBCC36724C0B24D006991A9 /* ColumnDateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBBCC36924C0B2C3006991A9 /* DashboardFooterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardFooterTableViewCell.swift; sourceTree = "<group>"; };
 		DBE35AAA24BE4C2A004547E8 /* HabiTrac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabiTrac.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +218,7 @@
 				DB2BE8DD24CD3A03009A2C73 /* HabitListViewController.swift */,
 				DB2BE8DF24CD3A5E009A2C73 /* CreateEditHabitViewController.swift */,
 				DB13941324BEBAE0000496B9 /* DashboardViewController.swift */,
+				DBB8D39E24D7BB50002700B6 /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */,
 				DB14D6FD24C3D89B0067B27C /* CategoryController.swift in Sources */,
 				DB6AC13724C73BE50029E74A /* User.swift in Sources */,
+				DBB8D39F24D7BB50002700B6 /* ProfileViewController.swift in Sources */,
 				DBE35AE224BE59EE004547E8 /* Category.swift in Sources */,
 				DBBCC36824C0B24D006991A9 /* ColumnDateCollectionViewCell.swift in Sources */,
 				DB13941624BEBB67000496B9 /* HabitDashboardTableViewCell.swift in Sources */,
