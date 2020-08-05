@@ -72,25 +72,25 @@ class MockDataController {
             case 0...3:
                 habit.categoryID = categories[0].id
                 try! RealmController.shared.realm.write {
-                    categories[0].habits.append(habit)
+                    categories[0].habits.append(habit.id)
                 }
                 break
             case 4...7:
                 habit.categoryID = categories[1].id
                 try! RealmController.shared.realm.write {
-                    categories[1].habits.append(habit)
+                    categories[1].habits.append(habit.id)
                 }
                 break
             case 8...11:
                 habit.categoryID = categories[2].id
                 try! RealmController.shared.realm.write {
-                    categories[2].habits.append(habit)
+                    categories[2].habits.append(habit.id)
                 }
                 break
             case 12...15:
                 habit.categoryID = categories[3].id
                 try! RealmController.shared.realm.write {
-                    categories[3].habits.append(habit)
+                    categories[3].habits.append(habit.id)
                 }
                 break
             default:

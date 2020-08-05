@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class HabitController {
     static let shared = HabitController()
@@ -43,10 +44,51 @@ class HabitController {
         }
     }
     
+    func deleteAllLocal() {
+        for habit in habits {
+            let realm = RealmController.shared.realm
+            
+            try! realm.write {
+                realm.delete(habit)
+            }
+        }
+    }
+    
+    func pullAndUpdateLocal(completion: @escaping () -> Void) {
+        let realm = RealmController.shared.realm
+        
+        guard let user = UserController.shared.currentUser, let database = FirebaseController.shared.database else { completion(); return }
+        database.child(user.firType).child(user.id).observeSingleEvent(of: .value) { (snapshot) in
+            guard let value = snapshot.value as? [String : AnyObject], let dict = value["habits"] as? [String : [String : AnyObject]] else { completion(); return }
+            for key in dict.keys {
+                if let habDict = dict[key] {
+                    _ = Habit(with: key, dict: habDict)
+                }
+            }
+            
+            self.habits = Array(realm.objects(Habit.self))
+            
+            completion()
+        }
+    }
+    
     func update(habit: Habit, with categoryID: String, title: String) {
-        habit.categoryID = categoryID
-        habit.title = title
-        habit.save(object: habit)
+        
+        var habit = habit
+        let realm = RealmController.shared.realm
+        
+        try! realm.write {
+            habit.categoryID = categoryID
+            habit.title = title
+            if !habit.objectExist(object: habit) {
+                realm.add(habit)
+            } else {
+                realm.add(habit, update: .modified)
+            }
+        }
+        
+        habit.firUpdate()
+        
         getHabits()
     }
     

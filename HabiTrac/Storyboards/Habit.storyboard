@@ -741,6 +741,7 @@
                         <outlet property="dashboardTableView" destination="XNO-eV-m7c" id="6Ue-SK-YUl"/>
                         <outlet property="headerTableView" destination="aK0-p8-1j9" id="4Xh-zy-YpZ"/>
                         <outlet property="headerTableViewHeight" destination="JGN-wn-wsM" id="Uc9-U7-ACG"/>
+                        <outlet property="keyViewHeight" destination="NQx-0c-AlM" id="sJq-zz-8MW"/>
                         <outlet property="tableViewBackground" destination="gQM-yL-WAO" id="4FZ-ws-sDW"/>
                     </connections>
                 </viewController>

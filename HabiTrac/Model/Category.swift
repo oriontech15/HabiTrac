@@ -21,7 +21,7 @@ enum CategoryType: String {
 class Category: Object {
     
     @objc dynamic var name: String = ""
-    var habits: RealmSwift.List<Habit> = List<Habit>()
+    var habits: RealmSwift.List<String> = List<String>()
     @objc dynamic var type: String = CategoryType.none.rawValue
     @objc dynamic var id: String = ""
     
@@ -45,8 +45,31 @@ extension Category: FirebaseType {
         var dict: [String : AnyObject] = [:]
         dict[self.catNameKey] = self.name as AnyObject
         dict[self.typeKey] = self.type as AnyObject
-        dict[self.habitsKey] = Array(self.habits).map { $0.id } as AnyObject
+        dict[self.habitsKey] = Array(self.habits) as AnyObject
         return dict
+    }
+    
+    convenience init?(with id: String, dict: [String : AnyObject]) {
+        self.init()
+        guard let name = dict[catNameKey] as? String,
+            let type = dict[typeKey] as? String else { return nil }
+        
+        let realm = RealmController.shared.realm
+        
+        try! realm.write {
+            self.id = id
+            self.name = name
+            self.type = type
+            if let habits = dict[habitsKey] as? [String] {
+                habits.forEach { self.habits.append($0) }
+            }
+            
+            if !objectExist(object: self) {
+                realm.add(self)
+            } else {
+                realm.add(self, update: .modified)
+            }
+        }
     }
 }
 
