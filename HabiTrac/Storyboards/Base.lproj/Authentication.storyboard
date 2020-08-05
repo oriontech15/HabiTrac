@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Authentication View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AuthenticationViewController" customModule="HabiTrac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXL-N3-QP1">
+                                <rect key="frame" x="25" y="936" width="364" height="60"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="euF-rx-HZF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="actionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rmQ-fi-oRi"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ATj-bN-RpO">
+                                <rect key="frame" x="30" y="1033" width="354" height="230"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HxQ-gO-EXG" customClass="CredintialsView" customModule="HabiTrac" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KXs-20-zii">
+                                                <rect key="frame" x="15" y="5" width="324" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="KXs-20-zii" firstAttribute="top" secondItem="HxQ-gO-EXG" secondAttribute="top" constant="5" id="D4V-Dx-JUR"/>
+                                            <constraint firstItem="KXs-20-zii" firstAttribute="leading" secondItem="HxQ-gO-EXG" secondAttribute="leading" constant="15" id="cMc-zz-YgA"/>
+                                            <constraint firstAttribute="bottom" secondItem="KXs-20-zii" secondAttribute="bottom" constant="5" id="mLd-Mr-KHR"/>
+                                            <constraint firstAttribute="height" constant="60" id="saX-GJ-4pR"/>
+                                            <constraint firstAttribute="trailing" secondItem="KXs-20-zii" secondAttribute="trailing" constant="15" id="wpY-me-4Fw"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textField" destination="KXs-20-zii" id="SbM-6c-wfR"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drc-Bj-qtJ" customClass="CredintialsView" customModule="HabiTrac" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="85" width="354" height="60"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CtG-wC-sQU">
+                                                <rect key="frame" x="15" y="5" width="324" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="CtG-wC-sQU" firstAttribute="top" secondItem="drc-Bj-qtJ" secondAttribute="top" constant="5" id="5u4-IA-k7X"/>
+                                            <constraint firstAttribute="bottom" secondItem="CtG-wC-sQU" secondAttribute="bottom" constant="5" id="K2p-Rq-pqo"/>
+                                            <constraint firstItem="CtG-wC-sQU" firstAttribute="leading" secondItem="drc-Bj-qtJ" secondAttribute="leading" constant="15" id="LGW-QM-aNd"/>
+                                            <constraint firstAttribute="trailing" secondItem="CtG-wC-sQU" secondAttribute="trailing" constant="15" id="iLA-xh-KkG"/>
+                                            <constraint firstAttribute="height" constant="60" id="pby-MI-OIz"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textField" destination="CtG-wC-sQU" id="Sb0-05-bpP"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDH-dT-tEO" customClass="CredintialsView" customModule="HabiTrac" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="170" width="354" height="60"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-WY-t4h">
+                                                <rect key="frame" x="15" y="5" width="324" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ZCF-WY-t4h" firstAttribute="leading" secondItem="MDH-dT-tEO" secondAttribute="leading" constant="15" id="70E-YF-JMN"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZCF-WY-t4h" secondAttribute="bottom" constant="5" id="9KU-Ol-2pW"/>
+                                            <constraint firstAttribute="height" constant="60" id="UHV-fD-sjB"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZCF-WY-t4h" secondAttribute="trailing" constant="15" id="mK7-MN-XZ6"/>
+                                            <constraint firstItem="ZCF-WY-t4h" firstAttribute="top" secondItem="MDH-dT-tEO" secondAttribute="top" constant="5" id="vza-hM-lD5"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textField" destination="ZCF-WY-t4h" id="GEB-Pz-bYS"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="OZg-yI-eig">
+                                <rect key="frame" x="37" y="364" width="340" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="OAf-a2-8mZ"/>
+                                    <constraint firstAttribute="height" constant="180" id="V9f-8J-cHT"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Md-Dn-fJm">
+                                <rect key="frame" x="147" y="1008" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="C6d-KT-PP6"/>
+                                    <constraint firstAttribute="height" constant="40" id="l6T-1O-CD0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.12941176469999999" green="0.41960784309999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="switchAuthModeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2av-Va-wRx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ATj-bN-RpO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="0yi-YX-iOC"/>
+                            <constraint firstItem="3Md-Dn-fJm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Bl-DN-Qmi"/>
+                            <constraint firstItem="ATj-bN-RpO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="700" id="3Pr-xx-4IF"/>
+                            <constraint firstItem="ATj-bN-RpO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5AN-qy-h7N"/>
+                            <constraint firstItem="3Md-Dn-fJm" firstAttribute="top" secondItem="tXL-N3-QP1" secondAttribute="bottom" constant="12" id="5wg-F7-qeb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ATj-bN-RpO" secondAttribute="trailing" constant="30" id="7VL-E0-2FS"/>
+                            <constraint firstAttribute="trailing" secondItem="tXL-N3-QP1" secondAttribute="trailing" constant="25" id="B9O-ME-wZM"/>
+                            <constraint firstItem="tXL-N3-QP1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="25" id="JhF-Za-hNn"/>
+                            <constraint firstItem="OZg-yI-eig" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oF5-QL-GP6"/>
+                            <constraint firstAttribute="bottom" secondItem="tXL-N3-QP1" secondAttribute="bottom" constant="-100" id="qo7-rT-4kk"/>
+                            <constraint firstItem="OZg-yI-eig" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="320" id="zZw-Jd-tsb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="tXL-N3-QP1" id="v87-9A-bNy"/>
+                        <outlet property="actionButtonBottom" destination="qo7-rT-4kk" id="WLf-33-Q5W"/>
+                        <outlet property="confirmPasswordView" destination="MDH-dT-tEO" id="RqY-mt-8pO"/>
+                        <outlet property="emailView" destination="HxQ-gO-EXG" id="jGa-9U-JEE"/>
+                        <outlet property="logoTop" destination="zZw-Jd-tsb" id="STr-aE-zy5"/>
+                        <outlet property="passwordView" destination="drc-Bj-qtJ" id="NRK-Sc-QfE"/>
+                        <outlet property="stackView" destination="ATj-bN-RpO" id="bes-Zo-MKb"/>
+                        <outlet property="stackViewCenterY" destination="3Pr-xx-4IF" id="R3V-yA-sLE"/>
+                        <outlet property="switchAuthModeButton" destination="3Md-Dn-fJm" id="gDa-AS-iIE"/>
+                        <segue destination="laV-oa-eMS" kind="presentation" identifier="toHabitView" modalPresentationStyle="fullScreen" id="uWQ-af-tTr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="180" y="134"/>
+        </scene>
+        <!--Habit-->
+        <scene sceneID="TVD-Sx-dHv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Habit" id="laV-oa-eMS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Hox-yU-Egr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KuF-54-xxv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LoginScreenLogo" width="340" height="184"/>
+    </resources>
+</document>
