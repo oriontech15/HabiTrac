@@ -61,15 +61,18 @@ class DashboardViewController: UIViewController {
             guard let categoryName1 = CategoryController.shared.getCategory(from: $0.categoryID)?.name else { return false }
             guard let categoryName2 = CategoryController.shared.getCategory(from: $1.categoryID)?.name else { return false }
             return categoryName1 < categoryName2
-            //$0.categoryID == $1.categoryID
         }
         
+        // Reset to default constants
         self.headerTableViewHeight.constant = 80
         self.keyViewHeight.constant = 30
         
+        // Get the values that have defined heights
         let otherViewHeights: CGFloat = self.headerTableViewHeight.constant + self.keyViewHeight.constant + self.tabBarController!.tabBar.frame.height + 15
+        
+        // Subtract the defined heights from the total view height and divide by the number of habits to build the tableview row height to fill the screen
         self.rowHeight = CGFloat(self.view.frame.height - otherViewHeights) / (CGFloat(self.habits.count + 2))
-        let rowWidth = CGFloat(self.view.frame.width - 185) / CGFloat(Date.getLastDateOfMonth()?.getDayValue() ?? 30)
+        let rowWidth = CGFloat(self.view.frame.width - 185) / CGFloat(Date.getLastDateOfMonth()?.getDayValue() ?? 30) // Row width is for use when the device switches orientation
         self.rowWidth = (UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight) ? rowWidth : self.rowHeight
         
         self.headerTableViewHeight.constant = 50 + self.rowHeight
@@ -151,6 +154,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         
+        // Setup tableview row heights and row widths for change in orientation
         if UIDevice.current.orientation == .landscapeLeft || UIDevice.current.orientation == .landscapeRight {
             if let headerView = self.headerTableView.tableHeaderView {
                 headerView.frame.size = CGSize(width: headerView.frame.width, height: 0)
@@ -192,6 +196,8 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+/// Helper function that communicates with the other tableviews to scroll ALL
+/// collectionviews on the tableview cell when ONE collectionview scrolls
 extension DashboardViewController: CollectionViewScrollingDelegate {
     func scrollingIsHappening(offset: CGPoint) {
         for cell in self.dashboardTableView.visibleCells {

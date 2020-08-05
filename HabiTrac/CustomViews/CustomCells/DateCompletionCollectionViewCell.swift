@@ -10,6 +10,8 @@ import UIKit
 
 class DateCompletionCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var completedView: UIView!
     @IBOutlet weak var borderView: UIView!
     
@@ -21,7 +23,11 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var completionViewWidth: NSLayoutConstraint!
     @IBOutlet weak var completionViewHeight: NSLayoutConstraint!
     
+    // MARK: - PROPERTIES
+    
     private var date: Date!
+    
+    // MARK: - SETUP
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +45,14 @@ class DateCompletionCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    /// Sets up the collection view cell
+    /// - Parameters:
+    ///   - date: Date associated with the cell
+    ///   - color: Color for the cell
+    ///   - row: What tableview row it is on
+    ///   - completed: Whether the cell should be marked as deleted or not
+    ///   - highlight: Whether to highlight the cell for bar graph visibility
+    ///   - last: Whether the highlight should be rounded because it is the last cell
     func setupWithDate(date: Date, color: UIColor, row: Int? = nil, completed: Bool, highlight: Bool, last: Bool = false) {
         self.date = date
         completed ? (self.completedView.isHidden = false) : (self.completedView.isHidden = true)

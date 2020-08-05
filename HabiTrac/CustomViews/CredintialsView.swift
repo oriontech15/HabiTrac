@@ -10,11 +10,15 @@ import UIKit
 
 class CredintialsView: UIView {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var textField: UITextField! {
         didSet {
             textField.delegate = self
         }
     }
+    
+    // MARK: - SETUP
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +42,8 @@ class CredintialsView: UIView {
         self.layer.shadowRadius = 2
     }
 }
+
+// MARK: - TEXTFIELD DELEGATE
 
 extension CredintialsView: UITextFieldDelegate {
     

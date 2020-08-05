@@ -19,6 +19,8 @@ enum CreateEditMode {
 
 class CreateEditHabitViewController: UIViewController {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var habitTitleTextField: UITextField!
     @IBOutlet weak var seperatorView: UIView!
@@ -33,11 +35,15 @@ class CreateEditHabitViewController: UIViewController {
     
     @IBOutlet weak var actionStack: UIStackView!
     
+    // MARK: - PROPERTIES
+    
     private var selectedCategory: Category?
     
     var presentingDelegate: ViewDismissDelegate?
     var mode: CreateEditMode = .create
     var habit: Habit?
+    
+    // MARK: - SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +87,14 @@ class CreateEditHabitViewController: UIViewController {
         }
     }
     
+    /// Sets up the view based on the number of existing habits for a category.
+    /// If the habit count is equal to 4 the category is removed as an option.
+    /// This helps the user to have a more narrow focus on a small amount of habits to master rather than a infinite set, which increases effectiveness of mastering the habit.
+    /// - Parameters:
+    ///   - physicalCount: Current count of physical habits
+    ///   - mentalCount: Current count of mental habits
+    ///   - spiritualCount: Current count of spiritual habits
+    ///   - socialCount: Current count of social habits
     func setupWith(physicalCount: Int, mentalCount: Int, spiritualCount: Int, socialCount: Int) {
         if physicalCount == 4 { self.physicalCategoryButton.isHidden = true }
         if mentalCount == 4 { self.mentalCategoryButton.isHidden = true }
@@ -97,6 +111,8 @@ class CreateEditHabitViewController: UIViewController {
         self.spiritualCategoryButton.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1).withAlphaComponent(0.1)
         self.socialCategoryButton.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.7529411765, blue: 0, alpha: 1).withAlphaComponent(0.1)
     }
+    
+    // MARK: - IBACTIONS
     
     @IBAction func categoryButtonTapped(_ sender: UIButton) {
         self.physicalCategoryButton.setTitleColor(#colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1), for: .normal)
@@ -172,19 +188,9 @@ class CreateEditHabitViewController: UIViewController {
     @IBAction func cancelButtonTapped() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
+
+// MARK: - TEXTFIELD DELEGATE
 
 extension CreateEditHabitViewController: UITextFieldDelegate {
     

@@ -10,13 +10,19 @@ import UIKit
 
 class HabitTableViewCell: UITableViewCell {
     
+    // MARK: - IBOUTLET
+    
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var habitTitleLabel: UILabel!
     @IBOutlet weak var selectedBackground: UIView!
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var selectedBackgroundWidth: NSLayoutConstraint!
     
+    // MARK: - PROPERTIES
+    
     private var completed: Bool = false
+    
+    // MARK: - SETUP
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +31,40 @@ class HabitTableViewCell: UITableViewCell {
         self.checkImageView.alpha = 0.0
     }
     
+    func setup(with habit: Habit, currentDate: Date) {
+        self.habitTitleLabel.text = habit.title
+        
+        guard let category = CategoryController.shared.getCategory(from: habit.categoryID) else { return }
+        switch category.type {
+        case CategoryType.physical.rawValue:
+            self.habitTitleLabel.textColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
+            self.colorView.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
+            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1).withAlphaComponent(0.8)
+            break
+        case CategoryType.mental.rawValue:
+            self.habitTitleLabel.textColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
+            self.colorView.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
+            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1).withAlphaComponent(0.8)
+            break
+        case CategoryType.spiritual.rawValue:
+            self.habitTitleLabel.textColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1)
+            self.colorView.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1)
+            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1).withAlphaComponent(0.8)
+            break
+        case CategoryType.social.rawValue:
+            self.habitTitleLabel.textColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
+            self.colorView.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
+            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1).withAlphaComponent(0.8)
+            break
+        default:
+            break
+        }
+        
+        self.completed = habit.completionDates.contains(currentDate.toDateString())
+        self.highlight(completed: self.completed)
+    }
+    
+    // MARK: - ACTION UPDATE
     func highlight(completed: Bool) {
         if completed {
             UIView.animate(withDuration: 0.65, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
@@ -60,39 +100,6 @@ class HabitTableViewCell: UITableViewCell {
             
             self.completed = true
         }
-    }
-    
-    func setup(with habit: Habit, currentDate: Date) {
-        self.habitTitleLabel.text = habit.title
-        
-        guard let category = CategoryController.shared.getCategory(from: habit.categoryID) else { return }
-        switch category.type {
-        case CategoryType.physical.rawValue:
-            self.habitTitleLabel.textColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
-            self.colorView.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1)
-            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.996235311, green: 0.299339205, blue: 0.2904318571, alpha: 1).withAlphaComponent(0.8)
-            break
-        case CategoryType.mental.rawValue:
-            self.habitTitleLabel.textColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
-            self.colorView.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1)
-            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.3725490196, green: 0.7294117647, blue: 0.4901960784, alpha: 1).withAlphaComponent(0.8)
-            break
-        case CategoryType.spiritual.rawValue:
-            self.habitTitleLabel.textColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1)
-            self.colorView.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1)
-            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.6039215686, blue: 0.8509803922, alpha: 1).withAlphaComponent(0.8)
-            break
-        case CategoryType.social.rawValue:
-            self.habitTitleLabel.textColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
-            self.colorView.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1)
-            self.selectedBackground.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.8117647059, blue: 0.3215686275, alpha: 1).withAlphaComponent(0.8)
-            break
-        default:
-            break
-        }
-        
-        self.completed = habit.completionDates.contains(currentDate.toDateString())
-        self.highlight(completed: self.completed)
     }
     
     override func prepareForReuse() {

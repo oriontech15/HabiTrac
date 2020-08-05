@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// External Datasource for the header portion of the dashboard
 class DashboardHeaderExternalTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var headerTableView: UITableView!
@@ -20,14 +21,17 @@ class DashboardHeaderExternalTableViewDatasource: NSObject, UITableViewDataSourc
         self.habits = HabitController.shared.habits
     }
     
+    // Height for the collection view cells
     var rowHeight: CGFloat = 0 {
         didSet {
             headerTableView.reloadData()
         }
     }
     
+    // Width for the collection view cells
     var rowWidth: CGFloat = 0
     
+    // MARK: - TABLEVIEW SETUP
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,6 +52,10 @@ class DashboardHeaderExternalTableViewDatasource: NSObject, UITableViewDataSourc
     }
 }
 
+// MARK: - EXTENSION
+
+/// Helper function that communicates with the other tableviews to scroll ALL
+/// collectionviews on the tableview cell when ONE collectionview scrolls
 extension DashboardHeaderExternalTableViewDatasource: CollectionViewScrollingDelegate {
     func scrollingIsHappening(offset: CGPoint) {
         for cell in self.headerTableView.visibleCells {
