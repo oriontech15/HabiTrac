@@ -37,6 +37,7 @@ extension Syncable {
     var completionDatesKey: String { get { return "completionDates" } }
 }
 
+/// Protocol for Realm objects that makes the delete and save process more streamlined
 protocol Realmifyable {
     var realm: Realm { get }
     
@@ -48,6 +49,8 @@ protocol Realmifyable {
 extension Realmifyable {
     var realm: Realm { get { return try! Realm() } }
     
+    /// Saves a Realmifyable object in Realm
+    /// - Parameter object: The Realmifyable object
     func save<T: Object & Syncable>(object: T) {
         
         let dict = object.dictRepresentation()
@@ -122,12 +125,17 @@ extension Realmifyable {
         }
     }
     
+    /// Deletes the object in the Realm
+    /// - Parameter object: Object to be deleted
     func delete<T: Object & Syncable>(object: T) {
         try! realm.write {
             realm.delete(object)
         }
     }
     
+    /// Checks if the object being written to is already in the Realm
+    /// - Parameter object: Object being written to
+    /// - Returns: True if the object is in the Realm, False otherwise
     func objectExist <T: Object & Syncable>(object: T) -> Bool {
         if let user = object as? User {
             return realm.object(ofType: User.self, forPrimaryKey: user.id) != nil

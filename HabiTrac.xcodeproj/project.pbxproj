@@ -25,7 +25,6 @@
 		DB6AC13724C73BE50029E74A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13624C73BE50029E74A /* User.swift */; };
 		DB6AC13924C764690029E74A /* TotalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */; };
 		DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */; };
-		DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DB24BFB2D0009212EA /* MockDataController.swift */; };
 		DBAB36DE24BFEC10009212EA /* DateCompletionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */; };
 		DBAE288424BE6238000B952C /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAE288324BE6238000B952C /* RealmController.swift */; };
 		DBAE288624BE70DA000B952C /* Habit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBAE288524BE70DA000B952C /* Habit.storyboard */; };
@@ -44,6 +43,7 @@
 		DBE35AE624BE5C95004547E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */; };
 		DBF271C924D5FD79003FF6D7 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF271C824D5FD79003FF6D7 /* AuthenticationViewController.swift */; };
 		DBF271CB24D60D4B003FF6D7 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF271CA24D60D4B003FF6D7 /* UserController.swift */; };
+		DBFFF90924DAFD03006E60D8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFFF90824DAFD03006E60D8 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,6 @@
 		DB6AC13624C73BE50029E74A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DB6AC13824C764690029E74A /* TotalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalsTableViewCell.swift; sourceTree = "<group>"; };
 		DB6AC13A24C764BF0029E74A /* TotalForDayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalForDayCollectionViewCell.swift; sourceTree = "<group>"; };
-		DBAB36DB24BFB2D0009212EA /* MockDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataController.swift; sourceTree = "<group>"; };
 		DBAB36DD24BFEC10009212EA /* DateCompletionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompletionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBAE288324BE6238000B952C /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		DBAE288524BE70DA000B952C /* Habit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Habit.storyboard; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		DBF271C824D5FD79003FF6D7 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		DBF271CA24D60D4B003FF6D7 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DBFB98A04044FA5FDC0D7D9A /* Pods-HabiTrac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiTrac.release.xcconfig"; path = "Target Support Files/Pods-HabiTrac/Pods-HabiTrac.release.xcconfig"; sourceTree = "<group>"; };
+		DBFFF90824DAFD03006E60D8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				DB6AC13624C73BE50029E74A /* User.swift */,
-				DBF271CA24D60D4B003FF6D7 /* UserController.swift */,
 				DBE35AE124BE59EE004547E8 /* Category.swift */,
 				DBE35AE324BE59F4004547E8 /* Habit.swift */,
 			);
@@ -170,11 +169,11 @@
 		DB14D70524C54C7A0067B27C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBF271CA24D60D4B003FF6D7 /* UserController.swift */,
 				DBAE288324BE6238000B952C /* RealmController.swift */,
 				DB14D70224C5458D0067B27C /* DashboardController.swift */,
 				DB302F1B24CF80E200A33615 /* HabitController.swift */,
 				DB14D6FC24C3D89B0067B27C /* CategoryController.swift */,
-				DBAB36DB24BFB2D0009212EA /* MockDataController.swift */,
 				DB15FCD124D5021F006BEFC1 /* FirebaseController.swift */,
 			);
 			path = Controllers;
@@ -188,6 +187,7 @@
 				DBE35AB624BE4C2B004547E8 /* Assets.xcassets */,
 				DBE35ABB24BE4C2B004547E8 /* Info.plist */,
 				DBE35AE524BE5C95004547E8 /* GoogleService-Info.plist */,
+				DBFFF90824DAFD03006E60D8 /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -552,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBE35AE424BE59F4004547E8 /* Habit.swift in Sources */,
+				DBFFF90924DAFD03006E60D8 /* Extensions.swift in Sources */,
 				DBBCC36A24C0B2C3006991A9 /* DashboardFooterTableViewCell.swift in Sources */,
 				DBF271C924D5FD79003FF6D7 /* AuthenticationViewController.swift in Sources */,
 				DB14D70124C4E9CA0067B27C /* DashboardFooterExternalTableViewDatasource.swift in Sources */,
@@ -567,7 +568,6 @@
 				DBE35AB024BE4C2A004547E8 /* SceneDelegate.swift in Sources */,
 				DB13941424BEBAE0000496B9 /* DashboardViewController.swift in Sources */,
 				DB14D70324C5458D0067B27C /* DashboardController.swift in Sources */,
-				DBAB36DC24BFB2D0009212EA /* MockDataController.swift in Sources */,
 				DB302F1C24CF80E200A33615 /* HabitController.swift in Sources */,
 				DB6AC13B24C764BF0029E74A /* TotalForDayCollectionViewCell.swift in Sources */,
 				DBF271CB24D60D4B003FF6D7 /* UserController.swift in Sources */,

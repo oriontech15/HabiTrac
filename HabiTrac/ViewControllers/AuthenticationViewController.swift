@@ -17,7 +17,7 @@ enum AuthMode {
 
 class AuthenticationViewController: UIViewController {
     
-    var authMode: AuthMode = .signUp
+    // MARK: - IBOUTLETS
     
     @IBOutlet weak var emailView: CredintialsView!
     @IBOutlet weak var passwordView: CredintialsView!
@@ -31,14 +31,13 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var stackViewCenterY: NSLayoutConstraint!
     @IBOutlet weak var actionButtonBottom: NSLayoutConstraint!
     @IBOutlet weak var logoTop: NSLayoutConstraint!
+
+    // MARK: - PROPERTIES
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-    }
-    
+    var authMode: AuthMode = .signUp
+
+    // MARK: - SETUP
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkAuth()
@@ -70,6 +69,8 @@ class AuthenticationViewController: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: - IBACTION
+    
     @IBAction func actionButtonTapped(_ sender: UIButton) {
         
         if self.authMode == .signUp {
@@ -100,15 +101,4 @@ class AuthenticationViewController: UIViewController {
         
         setup()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

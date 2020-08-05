@@ -14,10 +14,14 @@ protocol CollectionViewScrollingDelegate {
 
 class HabitDashboardTableViewCell: UITableViewCell {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var habitTitleLabel: UILabel!
     @IBOutlet weak var shadowStack: UIStackView!
     @IBOutlet weak var labelWidthConstraint: NSLayoutConstraint!
+    
+    // MARK: - PROPERTIES
     
     private var tableViewRow: Int = 0
     var scrollDelegate: CollectionViewScrollingDelegate?
@@ -29,21 +33,15 @@ class HabitDashboardTableViewCell: UITableViewCell {
     private var rowHeight: CGFloat = 0
     private var rowWidth: CGFloat = 0
     
+    // MARK: - SETUP
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-    
     }
     
     deinit {
         self.scrollDelegate = nil
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     func setup(with habit: Habit, rowHeight: CGFloat, rowWidth: CGFloat, row: Int) {
@@ -80,18 +78,22 @@ class HabitDashboardTableViewCell: UITableViewCell {
         }
     }
     
+    /// Helper function to scroll the cell when it or other collectionviews are scrolled
+    /// - Parameter offset: The offset at which it or other collectionviews have been scrolled
     func scroll(offset: CGPoint) {
         if offset.x == 0 {
             self.shadowStack.isHidden = true
         }
         
         self.collectionView.setContentOffset(offset, animated: false)
-        //self.labelWidthConstraint.constant = 100 - offset.x
         self.scrollingBeingUpdated = false
     }
     
 }
 
+// MARK: CELL COLLECTION VIEW SETUP
+
+// Sets up the collection view for each cell. Used to build out dashboard
 extension HabitDashboardTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

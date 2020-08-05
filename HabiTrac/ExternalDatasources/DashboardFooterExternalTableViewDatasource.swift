@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// External Datasource for footer tableview on dashboard
 class DashboardFooterExternalTableViewDatasource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +20,7 @@ class DashboardFooterExternalTableViewDatasource: NSObject, UITableViewDataSourc
         self.habits = HabitController.shared.habits
     }
     
+    // MARK: - TABLEVIEW SETUP
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

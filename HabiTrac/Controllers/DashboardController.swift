@@ -12,6 +12,8 @@ class DashboardController {
     
     static let shared = DashboardController()
     
+    // MARK: - HELPER FUNCTIONS
+    
     func getTotalHabitsCompletedForDay(date: String) -> Int {
         let habits = HabitController.shared.habits
         

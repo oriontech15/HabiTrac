@@ -10,10 +10,14 @@ import UIKit
 
 class HabitListViewController: UITableViewController {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var previousDateButton: UIButton!
     @IBOutlet weak var nextDateButton: UIButton!
     @IBOutlet weak var createButton: UIBarButtonItem!
+    
+    // MARK: - PROPERTIES
     
     private let MAX_HABIT_COUNT = 16
     private var swipedHabit: Habit?
@@ -25,6 +29,8 @@ class HabitListViewController: UITableViewController {
     }
     
     private var habits: [Habit] = []
+    
+    // MARK: - SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +46,7 @@ class HabitListViewController: UITableViewController {
         }
     }
     
+    // MARK: - IBACTIONS
     
     @IBAction func createButtonTapped() {
         if habits.count == MAX_HABIT_COUNT {
@@ -82,15 +89,7 @@ class HabitListViewController: UITableViewController {
         self.performSegue(withIdentifier: "toProfileView", sender: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCreateEditHabitView" {
@@ -116,6 +115,8 @@ class HabitListViewController: UITableViewController {
     
 }
 
+// MARK: - PROTOCOL DELEGATE PATTERN EXTENSIONS
+
 extension HabitListViewController: SignOutDelegate {
     func signOut() {
         self.tabBarController?.dismiss(animated: true, completion: nil)
@@ -129,6 +130,8 @@ extension HabitListViewController: ViewDismissDelegate {
     }
 }
 
+
+// MARK: - TABLEVIEW SETUP
 extension HabitListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return CategoryController.shared.categories.count

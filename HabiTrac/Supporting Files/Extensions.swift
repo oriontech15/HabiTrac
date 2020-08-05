@@ -1,123 +1,33 @@
 //
-//  MockDataController.swift
+//  Extensions.swift
 //  HabiTrac
 //
-//  Created by Justin Smith on 7/15/20.
+//  Created by Justin Smith on 8/5/20.
 //  Copyright © 2020 Justin Smith. All rights reserved.
 //
 
-import Foundation
-import RealmSwift
+import UIKit
 
-class MockDataController {
-    
-    static let shared = MockDataController()
-    
-    var categories: [Category] = []
-    var mockData: [Habit] = []
-    
-    func createCategories() {
-        
-        let created = UserDefaults.standard.bool(forKey: "CategoriesCreatedKey")
-        
-        if !created {
-            
-            let physical = Category()
-            physical.name = "Physical"
-            physical.type = "Physical"
-            physical.save(object: physical)
-            
-            let mental = Category()
-            mental.name = "Mental"
-            mental.type = "Mental"
-            mental.save(object: mental)
-            
-            let spiritual = Category()
-            spiritual.name = "Spiritual"
-            spiritual.type = "Spiritual"
-            spiritual.save(object: spiritual)
-            
-            let social = Category()
-            social.name = "Social"
-            social.type = "Social"
-            social.save(object: social)
-            
-            self.categories = [physical, mental, spiritual, social]
-            
-            UserDefaults.standard.set(true, forKey: "CategoriesCreatedKey")
-        } else {
-            let realm = RealmController.shared.realm
-            
-            self.categories = Array(realm.objects(Category.self))
-        }
-    }
-    
-    func createMockData() {
-        createCategories()
-        var habits: [Habit] = []
-        
-        for index in 0..<16 {
-            let habit = Habit()
-            habit.title = "Habit \(index + 1)"
-            
-            for _ in 0..<30 {
-                let random = arc4random_uniform(30)
-                let dateString = Date.getFirstDateOfMonth()!.add(days: Int(random))!.toDateString()
-                if !habit.completionDates.contains(dateString) {
-                    habit.completionDates.append(dateString)
-                }
-            }
-            
-            switch index {
-            case 0...3:
-                habit.categoryID = categories[0].id
-                try! RealmController.shared.realm.write {
-                    categories[0].habits.append(habit.id)
-                }
-                break
-            case 4...7:
-                habit.categoryID = categories[1].id
-                try! RealmController.shared.realm.write {
-                    categories[1].habits.append(habit.id)
-                }
-                break
-            case 8...11:
-                habit.categoryID = categories[2].id
-                try! RealmController.shared.realm.write {
-                    categories[2].habits.append(habit.id)
-                }
-                break
-            case 12...15:
-                habit.categoryID = categories[3].id
-                try! RealmController.shared.realm.write {
-                    categories[3].habits.append(habit.id)
-                }
-                break
-            default:
-                break
-            }
-            
-            habit.save(object: habit)
-            habits.append(habit)
-        }
-        
-        self.mockData = habits
-    }
-}
-
+/// APP RELATED EXTENSIONS
 extension Date {
+    
+    /// Gets the date for the start of the week, Monday being considered the start day
     var startOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
         return gregorian.date(byAdding: .day, value: 1, to: sunday)
     }
 
+    /// Gets the date for the end of the week, Sunday being considered the end day
     var endOfWeek: Date? {
         let gregorian = Calendar(identifier: .gregorian)
         guard let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self)) else { return nil }
         return gregorian.date(byAdding: .day, value: 7, to: sunday)
     }
     
+    /// Take a date and adds either a positive or negative number of days to it
+    /// - Parameter days: Number of days to be added to the date
+    /// - Returns: Date based on the result of adding or subtracting the days
     func add(days: Int) -> Date? {
         let currentDate = self
         var dateComponent = DateComponents()
@@ -128,6 +38,8 @@ extension Date {
         return futureDate
     }
     
+    /// Gets the date for the first day of the current month
+    /// - Returns: Date of the first day of the current month
     static func getFirstDateOfMonth() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -139,6 +51,8 @@ extension Date {
         return startOfMonth
     }
     
+    /// Gets the date for the last day of the current month
+    /// - Returns: Date of the last day of the current month
     static func getLastDateOfMonth() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -156,6 +70,9 @@ extension Date {
         return endOfMonth
     }
     
+    
+    /// Gets the day as a number for a date
+    /// - Returns: Day number value
     func getDayValue() -> Int {
         let now = self
         let dateFormatter = DateFormatter()
@@ -165,6 +82,8 @@ extension Date {
         return dayValue
     }
     
+    /// Gets the first date of the current year
+    /// - Returns: Date for the first day of the current year
     static func getFirstDateOfYear() -> Date? {
         let dateFormatter = DateFormatter()
         let date = Date()
@@ -176,6 +95,9 @@ extension Date {
         return startOfYear
     }
     
+    /// Gets a string representation of a date
+    /// - Parameter style: Date style of the date string to be returned
+    /// - Returns: String representation of date
     func toDateString(_ style: DateFormatter.Style = .short) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = style
@@ -185,6 +107,8 @@ extension Date {
         return date
     }
     
+    /// Gets all dates for the current week, beginning with Monday
+    /// - Returns: Array containing all the dates for the current week
     func getCurrentWeekDates() -> [String] {
         let startOfWeek = Date().startOfWeek
         
@@ -199,6 +123,8 @@ extension Date {
         return dateStrings
     }
     
+    /// Gets all dates for the current month
+    /// - Returns: Array containing all dates for the current month
     func getCurrentMonthDates() -> [String] {
         let startOfMonth = Date.getFirstDateOfMonth()
         let endOfMonth = Date.getLastDateOfMonth()!
@@ -217,6 +143,8 @@ extension Date {
         return dateStrings
     }
     
+    /// Gets month string of current month
+    /// - Returns: String value of current month, i.e. (January)
     func getCurrentMonthString() -> String {
         let now = self
         let dateFormatter = DateFormatter()
@@ -225,6 +153,8 @@ extension Date {
         return nameOfMonth
     }
     
+    /// Gets current day string
+    /// - Returns: String value of current day
     func getCurrentDayString() -> String {
         let now = self
         let dateFormatter = DateFormatter()
@@ -235,6 +165,11 @@ extension Date {
 }
 
 extension UIView {
+    
+    /// Rounds the specified corners of a view
+    /// - Parameters:
+    ///   - corners: Array of corners to round
+    ///   - radius: Radius to round corners
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath = UIBezierPath(
             roundedRect: bounds,

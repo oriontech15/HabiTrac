@@ -14,6 +14,8 @@ protocol SignOutDelegate {
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var weekTotalLabel: UILabel!
     @IBOutlet weak var monthTotalLabel: UILabel!
     
@@ -31,10 +33,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     
+    // MARK: - Properties
+
     private var inEditMode = false
     
     let user = UserController.shared.currentUser
     var signOutDelegate: SignOutDelegate?
+    
+    // MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,17 @@ class ProfileViewController: UIViewController {
         self.monthTotalLabel.text = "\(HabitController.shared.getMonthTotals())"
         setup()
     }
+    
+    private func setup() {
+        guard let user = UserController.shared.currentUser else { return }
+        self.nameLabel.text = user.firstName + " " + user.lastName
+        self.emailLabel.text = user.email
+        
+        self.firstNameTextField.text = user.firstName
+        self.lastNameTextField.text = user.lastName
+    }
+    
+    // MARK: - IBActions
     
     @IBAction func cancelButtonTapped() {
         self.dismiss(animated: true, completion: nil)
@@ -126,28 +143,9 @@ class ProfileViewController: UIViewController {
             self.signOutDelegate?.signOut()
         }
     }
-    
-    private func setup() {
-        guard let user = UserController.shared.currentUser else { return }
-        self.nameLabel.text = user.firstName + " " + user.lastName
-        self.emailLabel.text = user.email
-        
-        self.firstNameTextField.text = user.firstName
-        self.lastNameTextField.text = user.lastName
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+// MARK: - Extensions
 
 extension ProfileViewController: UITextFieldDelegate {
     

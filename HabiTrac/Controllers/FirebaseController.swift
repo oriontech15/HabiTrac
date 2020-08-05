@@ -29,6 +29,10 @@ class FirebaseController {
         database = Database.database().reference()
     }
     
+    // MARK: - AUTHENTICATION
+    
+    /// Checks if there is a user logged in already
+    /// - Returns: true if a user is logged in, false otherwise
     func checkAuth() -> Bool {
         guard let firUser = Auth.auth().currentUser else { return false }
         
@@ -36,6 +40,7 @@ class FirebaseController {
         user.email = firUser.email ?? ""
         user.id = firUser.uid
 
+        // Pull user data from Firebase
         database.child(user.firType).child(user.id).observeSingleEvent(of: .value) { (snapshot) in
             guard let dict = snapshot.value as? [String : AnyObject] else { return }
             if let firstName = dict[user.firstNameKey] as? String {
@@ -45,7 +50,7 @@ class FirebaseController {
                 user.lastName = lastName
             }
             if let phone = dict[user.phoneKey] as? String {
-                user.phone = phone 
+                user.phone = phone
             }
         }
         
@@ -54,6 +59,12 @@ class FirebaseController {
         return true
     }
     
+    
+    /// Signs the user in with the provided credintials
+    /// - Parameters:
+    ///   - email: The email the user entered to sign up with
+    ///   - password: The password to go along with the email
+    ///   - completion: The block that gets executed after signin completes successfully
     func signIn(with email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -76,6 +87,11 @@ class FirebaseController {
         }
     }
     
+    /// Signs the user up with an email password combo
+    /// - Parameters:
+    ///   - email: The email the user entered to sign up with
+    ///   - password: The password to go along with the email
+    ///   - completion: The block that gets executed after signup completes successfully
     func signUp(with email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let result = authResult {
@@ -92,6 +108,7 @@ class FirebaseController {
         }
     }
     
+    /// Attempts to sign the user out, and clears the local database
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -106,15 +123,20 @@ class FirebaseController {
     }
 }
 
+
+// MARK: FIREBASE TYPE EXTENSION
+
 extension FirebaseType {
     
-    
+    // Database reference for the Firebase Database
     var database: DatabaseReference {
         get {
             return Database.database().reference()
         }
     }
     
+    /// Delete protocol function for FirebaseType objects that deletes the object on the database
+    /// - Parameter completion: Executes the block passed in after the object has been successfully deleted
     mutating func firDelete(completion: @escaping () -> Void) {
         guard let user = UserController.shared.currentUser else { return }
         self.database.child("users").child(user.id).child(firType).child(id).removeValue { (error, ref) in
@@ -125,6 +147,7 @@ extension FirebaseType {
         }
     }
     
+    /// Save protocol function for FirebaseType objects that saves/creates a new value on the Firebase database
     mutating func firSave() {
         let dict = self.dictRepresentation()
         
@@ -137,6 +160,7 @@ extension FirebaseType {
         }
     }
     
+    /// Update protocol function for FirebaseType objects that updates child values on the Firebase database
     mutating func firUpdate() {
         let dict = self.dictRepresentation()
         

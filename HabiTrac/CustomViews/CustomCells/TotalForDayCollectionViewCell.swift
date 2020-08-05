@@ -10,19 +10,21 @@ import UIKit
 
 class TotalForDayCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - IBOUTLETS
+    
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var dateBackgroundView: UIView!
     @IBOutlet weak var currentDateBackgroundView: UIView!
 
-    
+    // MARK: - PROPERTIES
+
     private var date: Date!
+    
+    // MARK: - SETUP
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //        self.borderView.layer.borderWidth = 0.5
-        //        self.borderView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
     }
     
     func setupWithDate(date: Date) {
