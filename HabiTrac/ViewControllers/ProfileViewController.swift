@@ -56,21 +56,38 @@ class ProfileViewController: UIViewController {
     @IBAction func actionButtonTapped() {
         // Save values
         guard var user = self.user else { return }
-        
-        if let email = emailTextField.text {
-            user.email = email
+        let realm = RealmController.shared.realm
+                
+        do {
+            try realm.write {
+                
+                if let email = emailTextField.text {
+                    user.email = email
+                }
+                
+                if let firstname = firstNameTextField.text {
+                    user.firstName = firstname
+                }
+                
+                if let lastname = lastNameTextField.text {
+                    user.lastName = lastname
+                }
+                
+                if !user.objectExist(object: user) {
+                    realm.add(user)
+                } else {
+                    realm.add(user, update: .modified)
+                }
+            }
+        } catch let error {
+            print("Error: \(error.localizedDescription)")
         }
         
-        if let firstname = firstNameTextField.text {
-            user.firstName = firstname
-        }
-        
-        if let lastname = lastNameTextField.text {
-            user.lastName = lastname
-        }
-        
-        user.save(object: user)
         user.firUpdate()
+        
+        self.emailLabel.text = user.email
+        self.nameLabel.text = user.firstName + " " + user.lastName
+        UserController.shared.currentUser = user
         
         editButtonTapped()
     }

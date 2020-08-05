@@ -67,25 +67,29 @@ class CategoryController {
         
         if !created {
             
-            let physical = Category()
+            var physical = Category()
             physical.name = "Physical"
             physical.type = "Physical"
             physical.save(object: physical)
+            physical.firSave()
             
-            let mental = Category()
+            var mental = Category()
             mental.name = "Mental"
             mental.type = "Mental"
             mental.save(object: mental)
+            mental.firSave()
             
-            let spiritual = Category()
+            var spiritual = Category()
             spiritual.name = "Spiritual"
             spiritual.type = "Spiritual"
             spiritual.save(object: spiritual)
+            spiritual.firSave()
             
-            let social = Category()
+            var social = Category()
             social.name = "Social"
             social.type = "Social"
             social.save(object: social)
+            social.firSave()
             
             self.categories = [physical, mental, spiritual, social]
             

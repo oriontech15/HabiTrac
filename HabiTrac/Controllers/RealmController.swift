@@ -52,12 +52,11 @@ extension Realmifyable {
         
         let dict = object.dictRepresentation()
         
-        if var user = object as? User {
+        if let user = object as? User {
             
             if let firstName = dict[object.firstNameKey] as? String,
                 let lastName = dict[object.lastNameKey] as? String,
-                let email = dict[object.emailKey] as? String,
-                let phone = dict[object.phoneKey] as? String {
+                let email = dict[object.emailKey] as? String {
                 
                 // If we arrive in this portion of the function then we know we are creating or updating a user to Realm as we have user properties in our generic object dictionary
                 do {
@@ -65,7 +64,6 @@ extension Realmifyable {
                         user.firstName = firstName
                         user.lastName = lastName
                         user.email = email
-                        user.phone = phone
                         if !objectExist(object: user) {
                             realm.add(user)
                         }
@@ -74,11 +72,9 @@ extension Realmifyable {
                     print("Error: \(error.localizedDescription)")
                 }
             }
-            
-            user.firSave()
         }
         
-        if var category = object as? Category {
+        if let category = object as? Category {
             if let catName = dict[object.catNameKey] as? String,
                 let type = dict[object.typeKey] as? String {
                 
@@ -97,11 +93,9 @@ extension Realmifyable {
                     print("Error: \(error.localizedDescription)")
                 }
             }
-            
-            category.firSave()
         }
         
-        if var habit = object as? Habit {
+        if let habit = object as? Habit {
             
             if let category = dict[object.categoryKey] as? String,
                 let title = dict[object.titleKey] as? String,
@@ -125,8 +119,6 @@ extension Realmifyable {
                 }
                 
             }
-            
-            habit.firSave()
         }
     }
     

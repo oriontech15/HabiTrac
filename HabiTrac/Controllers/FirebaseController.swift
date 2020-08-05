@@ -84,7 +84,7 @@ class FirebaseController {
                 user.email = result.user.email ?? ""
                 UserController.shared.currentUser = user
                 user.save(object: user)
-                user.firUpdate()
+                user.firSave()
                 
                 CategoryController.shared.createCategories()
                 completion(true)

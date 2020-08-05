@@ -25,10 +25,11 @@ class HabitController {
     }
     
     func createHabit(categoryID: String, title: String) {
-        let habit = Habit()
+        var habit = Habit()
         habit.categoryID = categoryID
         habit.title = title
         habit.save(object: habit)
+        habit.firSave()
         getHabits()
     }
     
