@@ -16,6 +16,7 @@ class Habit: Object {
     var completionDates: RealmSwift.List<String> = List<String>()
     @objc dynamic var id: String = ""
     
+    /// The required initialization for creating a Habit.
     required init() {
         self.id = UUID().uuidString
     }
